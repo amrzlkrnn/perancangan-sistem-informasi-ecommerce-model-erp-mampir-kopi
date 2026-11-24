@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url><loc>http://localhost:8080/tamu.html</loc></url>
+  <url><loc>http://localhost:8080/dashboard.html</loc></url>
+  <url><loc>http://localhost:8080/menu.html</loc></url>
+  <url><loc>http://localhost:8080/pesanan.html</loc></url>
+  <url><loc>http://localhost:8080/keranjang.html</loc></url>
+  <url><loc>http://localhost:8080/pembayaran.html</loc></url>
+  <url><loc>http://localhost:8080/riwayat.html</loc></url>
+  <url><loc>http://localhost:8080/wishlist.html</loc></url>
+  <url><loc>http://localhost:8080/profil.html</loc></url>
+  <url><loc>http://localhost:8080/login.html</loc></url>
+  <url><loc>http://localhost:8080/tentang.html</loc></url>
+  <url><loc>http://localhost:8080/kontak.html</loc></url>
+  <url><loc>http://localhost:8080/faq.html</loc></url>
+  <url><loc>http://localhost:8080/syarat.html</loc></url>
+  <url><loc>http://localhost:8080/privasi.html</loc></url>
+  <url><loc>http://localhost:8080/testimoni.html</loc></url>
+  <url><loc>http://localhost:8080/blog.html</loc></url>
+  <url><loc>http://localhost:8080/artikel.html</loc></url>
+  <url><loc>http://localhost:8080/promo.html</loc></url>
+  <url><loc>http://localhost:8080/lacak.html</loc></url>
+  <url><loc>http://localhost:8080/admin.html</loc></url>
+</urlset>

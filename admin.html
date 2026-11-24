@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mampir Kopi — Admin Dashboard</title>
+  <link rel="canonical" href="http://localhost:8080/admin.html">
+  <meta property="og:url" content="http://localhost:8080/admin.html">
+  <meta property="og:image" content="img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mampir Kopi — Admin Dashboard">
+  <meta name="twitter:description" content="Panel admin Mampir Kopi — kelola menu, pesanan, pembayaran, dan pelanggan.">
+  <meta name="twitter:image" content="img/og.jpg">
+<meta name="description" content="Mampir Kopi — kedai kopi di Kebon Jeruk, Jakarta Barat. Lihat menu, pesan kopi susu, manual brew, dan minuman favoritmu.">
+<link rel="icon" type="image/svg+xml" href="img/logo-mampir-kopi.svg">
+<meta property="og:title" content="Mampir Kopi">
+<meta property="og:description" content="Mampir Kopi — kedai kopi di Kebon Jeruk, Jakarta Barat. Lihat menu, pesan kopi susu, manual brew, dan minuman favoritmu.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="css/fonts.css?v=20261122e">
+<link rel="stylesheet" href="css/style.css?v=20261122m">
+<link rel="stylesheet" href="css/admin.css?v=20261122n">
+<link rel="stylesheet" href="css/tambahan.css?v=20261122m">
+<link rel="stylesheet" href="css/fitur.css?v=20261122m">
+<link rel="stylesheet" href="css/awwwards.css?v=20261122t">
+</head>
+<body class="admin-page">
+<a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+<div class="admin-shell">
+  <aside class="admin-sidebar">
+    <div class="admin-brand">
+      <span class="cup-icon"><svg viewBox="0 0 24 24" fill="none" stroke-width="2"><path d="M3 8h14v6a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Z"/><path d="M17 9h1.5a2.5 2.5 0 0 1 0 5H17"/></svg></span>
+      <div><b>Mampir Kopi</b><small>ADMIN PANEL</small></div>
+      <button class="admin-nav-toggle" id="navToggle" type="button" aria-label="Buka menu navigasi" aria-expanded="false" aria-controls="adminNav"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" aria-hidden="true"><path d="M4 7h16M4 12h16M4 17h16"/></svg></button>
+    </div>
+
+    <div class="admin-nav" id="adminNav">
+      <p class="nav-label">UTAMA</p>
+      <button class="admin-nav-item active" data-section="dashboard"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="9" rx="1"/><rect x="14" y="3" width="7" height="5" rx="1"/><rect x="14" y="12" width="7" height="9" rx="1"/><rect x="3" y="16" width="7" height="5" rx="1"/></svg><span>Dashboard</span></button>
+      <button class="admin-nav-item" data-section="profil"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg><span>Profil Saya</span></button>
+
+      <p class="nav-label">MANAJEMEN</p>
+      <button class="admin-nav-item" data-section="menu"><svg viewBox="0 0 24 24"><path d="M3 8h14v6a5 5 0 0 1-5 5H8a5 5 0 0 1-5-5V8Z"/><path d="M17 9h1.5a2.5 2.5 0 0 1 0 5H17M7 3v2M11 3v2"/></svg><span>Kelola Menu</span></button>
+      <button class="admin-nav-item" data-section="kategori"><svg viewBox="0 0 24 24"><path d="M4 4h7v7H4zM13 4h7v7h-7zM4 13h7v7H4zM13 13h7v7h-7z"/></svg><span>Kelola Kategori</span></button>
+      <button class="admin-nav-item" data-section="pesanan"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z"/><path d="M9 8h6M9 12h6"/></svg><span>Kelola Pesanan</span></button>
+      <button class="admin-nav-item" data-section="pembayaran"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M7 15h3"/></svg><span>Kelola Pembayaran</span></button>
+      <button class="admin-nav-item" data-section="pelanggan"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg><span>Kelola Pelanggan</span></button>
+      <button class="admin-nav-item" data-section="stok"><svg viewBox="0 0 24 24"><path d="M4 8l8-4 8 4v8l-8 4-8-4V8Z"/><path d="M4 8l8 4 8-4M12 12v8"/></svg><span>Manajemen Stok</span></button>
+      <button class="admin-nav-item" data-section="kirim"><svg viewBox="0 0 24 24"><path d="M3 8h11v9H3zM14 11h4l3 3v3h-7z"/><circle cx="7" cy="19" r="1.6"/><circle cx="17" cy="19" r="1.6"/></svg><span>Kelola Pengiriman</span></button>
+      <button class="admin-nav-item" data-section="kembali"><svg viewBox="0 0 24 24"><path d="M4 9a8 8 0 1 1-1 6"/><path d="M3 4v5h5"/></svg><span>Pengembalian &amp; Refund</span></button>
+
+      <p class="nav-label">LAINNYA</p>
+      <button class="admin-nav-item" data-section="laporan"><svg viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-3"/></svg><span>Laporan Transaksi</span></button>
+      <button class="admin-nav-item" data-section="promo"><svg viewBox="0 0 24 24"><path d="M5 19 19 5"/><circle cx="7" cy="7" r="2"/><circle cx="17" cy="17" r="2"/></svg><span>Promo / Voucher</span></button>
+      <button class="admin-nav-item" data-section="keuangan"><svg viewBox="0 0 24 24"><rect x="3" y="6" width="18" height="13" rx="2"/><path d="M3 10h18M16 15h2"/></svg><span>Laporan Keuangan</span></button>
+      <button class="admin-nav-item" data-section="analitik"><svg viewBox="0 0 24 24"><path d="M4 20V4M4 20h16M8 16v-5M12 16V8M16 16v-3"/></svg><span>Analitik & Statistik</span></button>
+      <button class="admin-nav-item" data-section="blog"><svg viewBox="0 0 24 24"><path d="M5 4h14v16H5z"/><path d="M9 9h6M9 13h6"/></svg><span>Kelola Blog</span></button>
+      <button class="admin-nav-item" data-section="testi"><svg viewBox="0 0 24 24"><path d="M12 4l2.2 4.6 5 .6-3.7 3.4 1 4.9L12 15l-4.5 2.5 1-4.9L4.8 9.2l5-.6z"/></svg><span>Kelola Testimoni</span></button>
+      <button class="admin-nav-item" data-section="kontak"><svg viewBox="0 0 24 24"><rect x="3" y="5" width="18" height="14" rx="2"/><path d="M3 7l9 6 9-6"/></svg><span>Pesan Masuk</span></button>
+      <button class="admin-nav-item" data-section="aturan"><svg viewBox="0 0 24 24"><circle cx="12" cy="12" r="3"/><path d="M19 12a7 7 0 0 0-.1-1.2l2-1.6-2-3.4-2.4 1a7 7 0 0 0-2-1.2L14 3h-4l-.5 2.6a7 7 0 0 0-2 1.2l-2.4-1-2 3.4 2 1.6a7 7 0 0 0 0 2.4l-2 1.6 2 3.4 2.4-1a7 7 0 0 0 2 1.2L10 21h4l.5-2.6a7 7 0 0 0 2-1.2l2.4 1 2-3.4-2-1.6c.06-.4.1-.8.1-1.2Z"/></svg><span>Pengaturan Website</span></button>
+      <button class="admin-nav-item" data-section="konten"><svg viewBox="0 0 24 24"><path d="M12 20h9"/><path d="M16.5 3.5a2.1 2.1 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5Z"/></svg><span>Konten Website</span></button>
+      <button class="admin-nav-item" data-section="admin"><svg viewBox="0 0 24 24"><path d="M12 3l8 3v6c0 5-3.5 8-8 9-4.5-1-8-4-8-9V6l8-3Z"/></svg><span>Kelola Admin</span></button>
+    </div>
+
+    <div class="sidebar-bottom">
+      <button id="logoutBtn">↪ Keluar</button>
+    </div>
+  </aside>
+
+  <main class="admin-main" id="konten">
+    <header class="admin-topbar">
+      <div>
+        <p class="eyebrow" id="todayDate">Administrator</p>
+        <h1 id="pageTitle">Dashboard</h1>
+      </div>
+      <div class="admin-profile" id="adminProfile" title="Akun saya">
+        <span class="avatar">A</span>
+        <div><b>Admin Mampir</b><small>Super Admin</small></div>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </header>
+
+    <section class="admin-section active" id="section-dashboard">
+      <div class="welcome-card">
+        <div><span class="mini-tag" id="heroTag">Hari ini</span><h2>Selamat datang, Admin</h2><p>Pesanan terbaru, penjualan, menu terlaris, stok menipis, pelanggan, dan prospek &mdash; semuanya terpantau di halaman ini.</p></div>
+        <div class="coffee-mark"><img src="img/logo-mampir-kopi.svg" alt="" width="100" height="100"></div>
+      </div>
+      <div class="admin-stats">
+        <div class="admin-stat"><span class="stat-icon"><svg viewBox="0 0 24 24"><path d="M6 3h12v18l-3-2-3 2-3-2-3 2V3Z"/><path d="M9 8h6M9 12h6"/></svg></span><div><small>Total Pesanan</small><strong id="statOrders">0</strong><em id="statOrdersEm">&nbsp;</em></div></div>
+        <div class="admin-stat"><span class="stat-icon">Rp</span><div><small>Pendapatan hari ini</small><strong id="statRevenue">Rp 0</strong><em id="statRevenueEm">&nbsp;</em></div></div>
+        <div class="admin-stat"><span class="stat-icon"><svg viewBox="0 0 24 24"><circle cx="12" cy="8" r="4"/><path d="M4 20a8 8 0 0 1 16 0"/></svg></span><div><small>Pelanggan</small><strong id="statCustomers">0</strong><em>Pelanggan terdaftar</em></div></div>
+        <div class="admin-stat stat-action"><span class="stat-icon"><svg viewBox="0 0 24 24"><path d="M6 16v-5a6 6 0 0 1 12 0v5l1.5 2h-15L6 16Z"/><path d="M10 21h4"/></svg></span><div><small>Perlu tindakan</small><button class="action-line" data-goto="pesanan"><b id="actOrders">0</b><span>pesanan menunggu</span></button><button class="action-line" data-goto="pembayaran"><b id="actPay">0</b><span>pembayaran belum diverifikasi</span></button></div></div>
+      </div>
+
+      <div class="admin-grid-2">
+        <div class="admin-card">
+          <div class="card-head"><div><h3>Pesanan Terbaru</h3><p>Pesanan yang baru masuk</p></div><button class="text-btn" data-goto="pesanan">Lihat semua →</button></div>
+          <div class="mini-orders" id="dashboardOrders"></div>
+        </div>
+        <div class="admin-card">
+          <div class="card-head"><div><h3>Ringkasan Penjualan</h3><p id="chartSub">7 hari terakhir, hari ini ditandai hijau</p></div><div class="period-toggle"><button class="active" data-period="minggu">Mingguan</button><button data-period="bulan">Bulanan</button></div></div>
+          <div class="bar-chart" id="weekChart"></div>
+          <div class="chart-total"><span id="weekTotalLabel">Total 7 hari terakhir</span><b id="weekTotal">Rp 0</b></div>
+        </div>
+      </div>
+
+      <div class="admin-grid-2">
+        <div class="admin-card">
+          <div class="card-head"><div><h3>Menu Terlaris</h3><p>Berdasarkan pesanan selesai</p></div></div>
+          <div id="topMenus"></div>
+        </div>
+        <div class="admin-card">
+          <div class="card-head"><div><h3>Stok Menipis</h3><p>Stok 5 atau kurang</p></div><button class="text-btn" data-goto="menu">Kelola menu →</button></div>
+          <div id="lowStock"></div>
+        </div>
+      </div>
+
+      <div class="section-toolbar" style="margin-top:28px"><div><h2>CRM</h2><p>Pelanggan, prospek (leads) dari pesan masuk, dan riwayat interaksi.</p></div></div>
+      <div class="admin-stats" id="crmCards"></div>
+      <div class="admin-card"><div class="card-head"><div><h3>Leads — Pesan Masuk</h3><p>Orang yang menghubungi lewat Kontak Kami; yang belum jadi pelanggan ditandai "Prospek baru".</p></div></div>
+        <div class="admin-table-wrap no-border"><table class="admin-table"><thead><tr><th>Tanggal</th><th>Nama</th><th>Email</th><th>Pesan</th><th>Status</th></tr></thead><tbody id="crmLeadsTable"></tbody></table></div></div>
+      <div class="admin-card"><div class="card-head"><div><h3>Pelanggan Teratas</h3><p>Berdasarkan total belanja.</p></div></div>
+        <div class="admin-table-wrap no-border"><table class="admin-table"><thead><tr><th>Pelanggan</th><th>Pesanan</th><th>Total Belanja</th><th>Terakhir Pesan</th></tr></thead><tbody id="crmTopTable"></tbody></table></div></div>
+      <div class="admin-card"><div class="card-head"><div><h3>Interaksi Terbaru</h3><p>Catatan dari Detail Pelanggan.</p></div></div><div id="crmInteraksi"></div></div>
+    </section>
+
+    <section class="admin-section" id="section-profil">
+      <div class="section-toolbar"><div><h2>Profil Saya</h2><p>Ganti foto profil, nama, email, dan password akun admin ini.</p></div></div>
+      <div class="profil-card">
+        <div class="profil-head">
+          <label class="profil-ava" for="admFile" title="Ganti foto profil">
+            <span class="profil-avatar" id="admAvatar"></span>
+          </label>
+          <div class="profil-id">
+            <p class="profil-nama" id="admNamaTampil">Memuat...</p>
+            <p class="profil-sub" id="admSub"></p>
+            <label class="btn btn-ghost btn-sm" for="admFile">Ganti Foto</label>
+            <button class="btn btn-ghost btn-sm" id="btnAdmHapusFoto" type="button" hidden>Hapus Foto</button>
+            <input type="file" id="admFile" accept="image/jpeg,image/png,image/webp" hidden>
+          </div>
+        </div>
+        <p class="profil-note">Format JPG, PNG, atau WebP, maksimal 2MB. Foto tersimpan di database, jadi tetap ada walau folder website ditimpa pembaruan.</p>
+        <div class="profil-div"></div>
+        <div class="profil-form">
+          <label class="profil-label" for="admNama">Nama</label>
+          <input class="profil-input" type="text" id="admNama" maxlength="80" autocomplete="name">
+          <label class="profil-label" for="admUsername">Username</label>
+          <input class="profil-input" type="text" id="admUsername" readonly>
+          <p class="profil-hint">Username diturunkan dari email saat akun dibuat dan tidak bisa diubah.</p>
+          <label class="profil-label" for="admEmail">Email</label>
+          <input class="profil-input" type="email" id="admEmail" autocomplete="email">
+          <p class="profil-hint">Dipakai untuk masuk sebagai pengganti username.</p>
+          <div class="profil-div"></div>
+          <label class="profil-label" for="admPwLama">Password Saat Ini</label>
+          <div class="pw-wrap"><input class="profil-input" type="password" id="admPwLama" autocomplete="current-password"><button type="button" class="pw-eye" data-pw="admPwLama" aria-label="Tampilkan password"><svg class="ic-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="ic-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></div>
+          <label class="profil-label" for="admPwBaru">Password Baru</label>
+          <div class="pw-wrap"><input class="profil-input" type="password" id="admPwBaru" autocomplete="new-password"><button type="button" class="pw-eye" data-pw="admPwBaru" aria-label="Tampilkan password"><svg class="ic-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="ic-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></div>
+          <label class="profil-label" for="admPwUlang">Ulangi Password Baru</label>
+          <div class="pw-wrap"><input class="profil-input" type="password" id="admPwUlang" autocomplete="new-password"><button type="button" class="pw-eye" data-pw="admPwUlang" aria-label="Tampilkan password"><svg class="ic-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="ic-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></div>
+          <p class="profil-note">Password Saat Ini wajib diisi bila mengganti email atau password. Kosongkan semua kolom password bila tidak mengubah keduanya.</p>
+          <button class="btn btn-primary profil-save" id="btnAdmSimpan" type="button">Simpan Perubahan</button>
+        </div>
+      </div>
+    </section>
+
+    <section class="admin-section" id="section-menu">
+      <div class="section-toolbar"><div><h2>Kelola Menu</h2><p>Tambah, edit, hapus, dan atur harga menu.</p></div><button class="btn btn-primary" id="addMenuBtn">+ Tambah Menu</button></div>
+      <div class="filter-row"><input class="admin-search" id="menuSearch" placeholder="Cari nama menu..."><select id="menuCategoryFilter"><option value="Semua">Semua kategori</option></select></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Menu</th><th>Kategori</th><th>Harga</th><th>Stok</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="menuTable"></tbody></table></div>
+    </section>
+
+    <section class="admin-section" id="section-kategori">
+      <div class="section-toolbar"><div><h2>Kelola Kategori</h2><p>Atur kelompok menu seperti kopi dan non-kopi.</p></div><button class="btn btn-primary" id="addCategoryBtn">+ Tambah Kategori</button></div>
+      <div class="category-grid" id="categoryGrid"></div>
+    </section>
+
+    <section class="admin-section" id="section-pesanan">
+      <div class="section-toolbar"><div><h2>Kelola Pesanan</h2><p>Lihat pesanan masuk dan ubah status pesanan.</p></div></div>
+      <div class="status-tabs" id="orderTabs"><button class="active" data-filter="Semua">Semua</button><button data-filter="Menunggu">Menunggu</button><button data-filter="Diproses">Diproses</button><button data-filter="Selesai">Selesai</button><button data-filter="Dibatalkan">Dibatalkan</button></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>ID</th><th>Pelanggan</th><th>Pesanan</th><th>Total</th><th>Waktu</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="orderTable"></tbody></table></div>
+    </section>
+
+    <section class="admin-section" id="section-pembayaran">
+      <div class="section-toolbar"><div><h2>Kelola Pembayaran</h2><p>Periksa dan verifikasi pembayaran pelanggan.</p></div></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>ID Transaksi</th><th>Pelanggan</th><th>Metode</th><th>Total</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="paymentTable"></tbody></table></div>
+    </section>
+
+    <section class="admin-section" id="section-pelanggan">
+      <div class="section-toolbar"><div><h2>Kelola Pelanggan</h2><p>Lihat data akun dan aktivitas pelanggan.</p></div><button class="btn btn-primary" id="addPelangganBtn">+ Tambah Pelanggan</button></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Pelanggan</th><th>Email</th><th>Total Pesanan</th><th>Total Belanja</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="customerTable"></tbody></table></div>
+    </section>
+
+    <section class="admin-section" id="section-laporan">
+      <div class="section-toolbar"><div><h2>Laporan Transaksi</h2><p>Riwayat penjualan dan pendapatan Mampir Kopi.</p></div>
+        <div class="action-group"><button class="btn btn-ghost" id="printReport">Cetak Laporan</button><button class="btn btn-primary" id="exportExcel">⬇ Export ke Excel</button></div></div>
+      <div class="report-cards"><div><small>Pendapatan Hari Ini</small><b id="repHari">Rp 0</b></div><div><small>Pendapatan Bulan Ini</small><b id="repBulan">Rp 0</b></div><div><small>Transaksi Selesai</small><b id="repSelesai">0</b></div></div>
+      <div class="filter-row laporan">
+        <label>Dari tanggal<input type="date" class="admin-search" id="repDari"></label>
+        <label>Sampai tanggal<input type="date" class="admin-search" id="repSampai"></label>
+        <label>Status<select id="repStatus"><option>Selesai</option><option>Semua</option><option>Menunggu</option><option>Diproses</option><option>Dibatalkan</option></select></label>
+      </div>
+      <div class="admin-card report-card"><h3>Riwayat Transaksi</h3><div class="admin-table-wrap no-border"><table class="admin-table"><thead><tr><th>Tanggal</th><th>Transaksi</th><th>Pelanggan</th><th>Item</th><th>Metode</th><th>Total</th><th>Status</th></tr></thead><tbody id="reportTable"></tbody></table></div>
+        <div class="report-total"><span>Total pada periode (tanpa pesanan dibatalkan)</span><b id="repPeriode">Rp 0</b></div></div>
+    </section>
+
+    <section class="admin-section" id="section-promo">
+      <div class="section-toolbar"><div><h2>Kelola Promo / Voucher</h2><p>Buat dan atur promo yang tersedia untuk pelanggan.</p></div><button class="btn btn-primary" id="addPromoBtn">+ Buat Promo</button></div>
+      <div class="promo-grid" id="promoGrid"></div>
+    </section>
+
+    <section class="admin-section" id="section-admin">
+      <div class="section-toolbar"><div><h2>Kelola Admin</h2><p>Atur akun dan hak akses administrator.</p></div><button class="btn btn-primary" id="addAdminBtn">+ Tambah Admin</button></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Admin</th><th>Email</th><th>Role</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="adminTable"></tbody></table></div>
+    </section>
+
+    <section class="admin-section" id="section-stok">
+      <div class="section-toolbar"><div><h2>Manajemen Stok</h2><p>Atur jumlah stok tiap menu. Stok berkurang otomatis saat pembayaran terverifikasi dan kembali saat pesanan dibatalkan.</p></div></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Menu</th><th>Kategori</th><th>Harga</th><th>Stok</th><th>Keadaan</th><th>Aksi</th></tr></thead><tbody id="stokTable"></tbody></table></div>
+    </section>
+
+    <section class="admin-section" id="section-kirim">
+      <div class="section-toolbar"><div><h2>Kelola Pengiriman</h2><p>Pesanan dengan cara Diantar, termasuk COD. Ubah status untuk menandai proses antar.</p></div></div>
+      <div class="filter-row"><label>Ongkir diantar (Rp)<input class="admin-search" id="ongkirInput" type="number" min="0" max="1000000" step="500" style="width:160px"></label><button class="btn btn-primary" id="ongkirSimpan" style="align-self:flex-end">Simpan Ongkir</button><span class="f-note" style="align-self:flex-end">Ongkir ini dipakai checkout untuk semua pesanan Diantar berikutnya.</span></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Kode</th><th>Tanggal</th><th>Pelanggan</th><th>Item</th><th>Alamat</th><th>Total</th><th>Pembayaran</th><th>Status</th></tr></thead><tbody id="kirimTable"></tbody></table></div>
+    </section>
+
+    <section class="admin-section" id="section-kembali">
+      <!-- REFUND 22 Nov: seksi ini kini juga menangani refund dana. -->
+      <div class="section-toolbar"><div><h2>Pengembalian &amp; Refund</h2><p>Pengajuan refund dana dan pengembalian pesanan dari pelanggan. Menyetujui = dana kembali (status pembayaran Refund), stok dipulihkan, pesanan dibatalkan. Transfer dana dilakukan manual ke tujuan yang dicantumkan pelanggan.</p></div></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Tanggal</th><th>Kode</th><th>Pelanggan</th><th>Jenis</th><th>Alasan</th><th>Tujuan Refund</th><th>Jumlah</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="kembaliTable"></tbody></table></div>
+    </section>
+
+    <section class="admin-section" id="section-keuangan">
+      <div class="section-toolbar"><div><h2>Laporan Keuangan</h2><p>Pemasukan dari pembayaran terverifikasi, dikurangi pengeluaran operasional.</p></div><button class="btn btn-primary" id="addKeluarBtn">+ Tambah Pengeluaran</button></div>
+      <div class="report-controls"><label>Dari <input type="date" id="keuDari"></label><label>Sampai <input type="date" id="keuSampai"></label><button class="btn btn-ghost" id="keuTerapkan">Terapkan</button></div>
+      <div class="admin-stats" id="keuCards"></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Tanggal</th><th>Keterangan</th><th>Jumlah</th><th>Aksi</th></tr></thead><tbody id="keluarTable"></tbody></table></div>
+    </section>
+
+    <section class="admin-section" id="section-analitik">
+      <div class="section-toolbar"><div><h2>Analitik &amp; Statistik</h2><p>Kunjungan web, penjualan, dan produk terlaris.</p></div></div>
+      <div class="admin-stats" id="anaCards"></div>
+      <div class="admin-card"><div class="card-head"><h3>Penjualan 7 Hari Terakhir (terverifikasi)</h3></div><div class="bar-chart" id="anaJual"></div></div>
+      <div class="admin-card"><div class="card-head"><h3>Kunjungan 7 Hari Terakhir</h3></div><div class="bar-chart" id="anaKunjung"></div></div>
+      <div class="admin-card"><div class="card-head"><h3>Produk Terlaris</h3></div><div id="anaLaris"></div></div>
+    </section>
+
+    <section class="admin-section" id="section-blog">
+      <div class="section-toolbar"><div><h2>Kelola Blog</h2><p>Artikel yang tampil di halaman Blog pelanggan.</p></div><button class="btn btn-primary" id="addArtikelBtn">+ Tulis Artikel</button></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Judul</th><th>Tanggal</th><th>Aksi</th></tr></thead><tbody id="blogTable"></tbody></table></div>
+    </section>
+
+    <section class="admin-section" id="section-testi">
+      <div class="section-toolbar"><div><h2>Kelola Testimoni</h2><p>Setujui testimoni dari pelanggan atau tulis sendiri. Hanya yang aktif yang tampil di web.</p></div><button class="btn btn-primary" id="addTestiBtn">+ Tambah Testimoni</button></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Nama</th><th>Isi</th><th>Rating</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="testiTable"></tbody></table></div>
+    </section>
+
+    <section class="admin-section" id="section-kontak">
+      <div class="section-toolbar"><div><h2>Pesan Masuk</h2><p>Pesan dari formulir Kontak Kami di website.</p></div></div>
+      <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Tanggal</th><th>Nama</th><th>Email</th><th>Pesan</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="kontakTable"></tbody></table></div>
+    </section>
+
+    <section class="admin-section" id="section-aturan">
+      <div class="section-toolbar"><div><h2>Pengaturan Website</h2><p>Informasi kedai yang tampil di halaman Tentang Kami dan Kontak Kami.</p></div></div>
+      <div class="admin-card">
+        <div class="form-grid">
+          <label>Nama Kedai<input id="setNama" type="text"></label>
+          <label>Jam Buka<input id="setJam" type="text"></label>
+          <label>Telepon / WhatsApp<input id="setTelepon" type="text" placeholder="08xx..."></label>
+          <label>Email<input id="setEmail" type="email" placeholder="halo@..."></label>
+          <label>Instagram<input id="setIG" type="text"></label>
+          <label style="grid-column:1/-1">Alamat<textarea id="setAlamat" rows="2"></textarea></label>
+        </div>
+        <div class="modal-actions"><button class="btn btn-primary" id="setSimpan">Simpan Pengaturan</button></div>
+        <div class="form-group" style="margin-top:18px"><label>LOGO KEDAI</label>
+          <img class="preview" id="logoPreview" src="img/logo-mampir-kopi.svg" alt="Logo saat ini">
+          <input id="logoFile" type="file" accept=".svg,image/svg+xml">
+          <div class="hint">SVG, maks. 500 KB. Logo ini juga dipakai sebagai favicon — menggantinya mengubah keduanya di semua halaman.</div>
+          <div class="modal-actions"><button class="btn btn-ghost" id="logoUnggah">Unggah Logo Baru</button></div>
+        </div>
+        <p class="f-note">Logo dan favicon memakai berkas img/logo-mampir-kopi.svg di folder website.</p>
+      </div>
+    </section>
+
+    <section class="admin-section" id="section-konten">
+      <div class="section-toolbar"><div><h2>Konten Website</h2><p>Semua tulisan, FAQ, dan foto galeri di website. Perubahan langsung tampil di halaman, tanpa edit file.</p></div></div>
+
+      <div class="admin-card konten-card">
+        <h3>Hero Beranda (halaman tamu)</h3>
+        <div class="form-grid">
+          <label>Kicker<input type="text" data-konten-key="hero_tamu_kicker"></label>
+          <label style="grid-column:1/-1">Judul<input type="text" data-konten-key="hero_tamu_judul"></label>
+          <label style="grid-column:1/-1">Subjudul<textarea rows="2" data-konten-key="hero_tamu_sub"></textarea></label>
+        </div>
+        <div class="modal-actions"><button class="btn btn-primary" data-konten-save="hero_tamu_kicker,hero_tamu_judul,hero_tamu_sub">Simpan Hero Beranda</button></div>
+      </div>
+
+      <div class="admin-card konten-card">
+        <h3>Hero Dashboard (beranda pelanggan)</h3>
+        <div class="form-grid">
+          <label>Kicker<input type="text" data-konten-key="hero_dash_kicker"></label>
+          <label>Judul sapaan<input type="text" data-konten-key="hero_dash_judul"></label>
+          <label style="grid-column:1/-1">Subjudul<textarea rows="2" data-konten-key="hero_dash_sub"></textarea></label>
+        </div>
+        <p class="hint">Judul sapaan boleh memakai {nama}, nanti diganti nama depan pelanggan. Contoh: Halo, {nama}!</p>
+        <div class="modal-actions"><button class="btn btn-primary" data-konten-save="hero_dash_kicker,hero_dash_judul,hero_dash_sub">Simpan Hero Dashboard</button></div>
+      </div>
+
+      <div class="admin-card konten-card">
+        <h3>Caption Halaman Login</h3>
+        <div class="form-grid">
+          <label>Kicker<input type="text" data-konten-key="login_kicker"></label>
+          <label>Judul<input type="text" data-konten-key="login_judul"></label>
+        </div>
+        <div class="modal-actions"><button class="btn btn-primary" data-konten-save="login_kicker,login_judul">Simpan Caption Login</button></div>
+      </div>
+
+      <div class="admin-card konten-card">
+        <h3>Intro dan Judul di Beranda</h3>
+        <div class="form-grid">
+          <label>Kicker intro<input type="text" data-konten-key="intro_kicker"></label>
+          <label>Judul intro<input type="text" data-konten-key="intro_judul"></label>
+          <label style="grid-column:1/-1">Teks intro<textarea rows="4" data-konten-key="intro_teks"></textarea></label>
+          <label>Kicker strip andalan<input type="text" data-konten-key="andalan_kicker"></label>
+          <label>Judul strip andalan<input type="text" data-konten-key="andalan_judul"></label>
+          <label>Kicker galeri<input type="text" data-konten-key="galeri_kicker"></label>
+          <label>Judul galeri<input type="text" data-konten-key="galeri_judul"></label>
+          <label>Catatan galeri<input type="text" data-konten-key="galeri_catatan"></label>
+        </div>
+        <p class="hint">Teks intro: pisahkan paragraf dengan satu baris kosong.</p>
+        <div class="modal-actions"><button class="btn btn-primary" data-konten-save="intro_kicker,intro_judul,intro_teks,andalan_kicker,andalan_judul,galeri_kicker,galeri_judul,galeri_catatan">Simpan Intro dan Judul</button></div>
+      </div>
+
+      <div class="admin-card konten-card">
+        <h3>Menu Andalan (strip di beranda)</h3>
+        <p class="hint">Pilih 4 menu yang tampil di strip Andalan kami. Nama, foto, dan harga diambil langsung dari data menu, jadi kalau harga menu diubah, harga di strip ikut berubah.</p>
+        <div class="form-grid">
+          <label>Andalan 1<select data-andalan="0"></select></label>
+          <label>Andalan 2<select data-andalan="1"></select></label>
+          <label>Andalan 3<select data-andalan="2"></select></label>
+          <label>Andalan 4<select data-andalan="3"></select></label>
+        </div>
+        <div class="modal-actions"><button class="btn btn-primary" id="andalanSimpan">Simpan Menu Andalan</button></div>
+      </div>
+
+      <div class="admin-card konten-card">
+        <h3>Tentang Kami</h3>
+        <div class="form-grid">
+          <label style="grid-column:1/-1">Judul<input type="text" data-konten-key="tentang_judul"></label>
+          <label style="grid-column:1/-1">Lead<textarea rows="3" data-konten-key="tentang_lead"></textarea></label>
+          <label style="grid-column:1/-1">Visi<textarea rows="3" data-konten-key="tentang_visi"></textarea></label>
+          <label style="grid-column:1/-1">Misi<textarea rows="4" data-konten-key="tentang_misi"></textarea></label>
+          <label style="grid-column:1/-1">Cerita<textarea rows="6" data-konten-key="tentang_cerita"></textarea></label>
+        </div>
+        <p class="hint">Misi: satu misi per baris. Cerita: pisahkan paragraf dengan satu baris kosong.</p>
+        <div class="modal-actions"><button class="btn btn-primary" data-konten-save="tentang_judul,tentang_lead,tentang_visi,tentang_misi,tentang_cerita">Simpan Tentang Kami</button></div>
+      </div>
+
+      <div class="admin-card konten-card">
+        <div class="section-toolbar"><div><h3>FAQ</h3><p>Pertanyaan dan jawaban di halaman FAQ, urut dari atas ke bawah.</p></div><button class="btn btn-primary" id="addFaqBtn">+ Tambah FAQ</button></div>
+        <div class="admin-table-wrap"><table class="admin-table"><thead><tr><th>Urutan</th><th>Pertanyaan</th><th>Status</th><th>Aksi</th></tr></thead><tbody id="faqTable"></tbody></table></div>
+      </div>
+
+      <div class="admin-card konten-card">
+        <h3>Syarat dan Ketentuan</h3>
+        <div class="form-grid">
+          <label>Judul<input type="text" data-konten-key="syarat_judul"></label>
+          <label>Lead<input type="text" data-konten-key="syarat_lead"></label>
+          <label style="grid-column:1/-1">Isi<textarea rows="14" data-konten-key="syarat_isi"></textarea></label>
+        </div>
+        <p class="hint">Format: baris kosong memisahkan paragraf, baris yang diawali "# " menjadi subjudul, baris yang diawali "- " menjadi item list.</p>
+        <div class="modal-actions"><button class="btn btn-primary" data-konten-save="syarat_judul,syarat_lead,syarat_isi">Simpan Syarat dan Ketentuan</button></div>
+      </div>
+
+      <div class="admin-card konten-card">
+        <h3>Kebijakan Privasi</h3>
+        <div class="form-grid">
+          <label>Judul<input type="text" data-konten-key="privasi_judul"></label>
+          <label>Lead<input type="text" data-konten-key="privasi_lead"></label>
+          <label style="grid-column:1/-1">Isi<textarea rows="12" data-konten-key="privasi_isi"></textarea></label>
+        </div>
+        <p class="hint">Format sama seperti Syarat dan Ketentuan: "# " subjudul, "- " item list, baris kosong paragraf baru.</p>
+        <div class="modal-actions"><button class="btn btn-primary" data-konten-save="privasi_judul,privasi_lead,privasi_isi">Simpan Kebijakan Privasi</button></div>
+      </div>
+
+      <div class="admin-card konten-card">
+        <div class="section-toolbar"><div><h3>Galeri Beranda</h3><p>Foto di galeri halaman tamu. Foto baru diunggah ke folder galeri; foto lama dari Google Maps dan foto menu tidak terhapus saat itemnya dihapus.</p></div><button class="btn btn-primary" id="addGaleriBtn">+ Tambah Foto</button></div>
+        <div class="konten-galeri-grid" id="galeriGrid"></div>
+      </div>
+    </section>
+  </main>
+</div>
+
+<div class="modal" id="modal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">×</button>
+    <h3 id="modalTitle">Tambah Data</h3>
+    <div id="modalBody"></div>
+  </div>
+</div>
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/SplitText.min.js"></script>
+<script src="js/motion.js?v=20261122u"></script>
+<script src="js/admin.js?v=20261122f"></script>
+<script src="js/admin-fitur.js?v=20261122o"></script>
+</body>
+</html>

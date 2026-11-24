@@ -1,0 +1,187 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<script>/* Tema gelap tanpa kilatan (22 Nov 16:34): baca cache localStorage SEBELUM cat pertama. */try{if(localStorage.getItem('mk_tema')==='gelap')document.documentElement.setAttribute('data-tema','gelap');}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mampir Kopi — Edit Profil</title>
+  <link rel="canonical" href="http://localhost:8080/profil.html">
+  <meta property="og:url" content="http://localhost:8080/profil.html">
+  <meta property="og:image" content="img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mampir Kopi — Edit Profil">
+  <meta name="twitter:description" content="Edit profil Mampir Kopi — nama, foto, dan preferensi.">
+  <meta name="twitter:image" content="img/og.jpg">
+<meta name="description" content="Mampir Kopi — kedai kopi di Kebon Jeruk, Jakarta Barat. Lihat menu, pesan kopi susu, manual brew, dan minuman favoritmu.">
+<link rel="icon" type="image/svg+xml" href="img/logo-mampir-kopi.svg">
+<meta property="og:title" content="Mampir Kopi">
+<meta property="og:description" content="Mampir Kopi — kedai kopi di Kebon Jeruk, Jakarta Barat. Lihat menu, pesan kopi susu, manual brew, dan minuman favoritmu.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="css/fonts.css?v=20261122e">
+<link rel="stylesheet" href="css/style.css?v=20261122m">
+<link rel="stylesheet" href="css/tambahan.css?v=20261122m">
+<link rel="stylesheet" href="css/dashboard.css?v=20261122n">
+<link rel="stylesheet" href="css/fitur.css?v=20261122m">
+<link rel="stylesheet" href="css/animasi.css?v=20261122n">
+<link rel="stylesheet" href="css/awwwards.css?v=20261122t">
+<link rel="stylesheet" href="css/tema-gelap.css?v=20261122c">
+<style>
+.profil-page .page-heading{ margin:26px 0 18px; }
+.profil-page .page-heading h1{ font-size:30px; }
+.profil-page .page-heading p{ font-size:13.5px; }
+.profil-card{ background:#FFFFFF; border:1px solid #E2D5C3; border-radius:18px; padding:20px; margin-bottom:44px; box-shadow:0 16px 32px -24px rgba(41,53,45,.28); }
+.profil-head{ display:flex; align-items:center; gap:16px; }
+.profil-ava{ position:relative; display:block; width:84px; height:84px; flex:0 0 84px; cursor:pointer; }
+.profil-avatar{ width:84px; height:84px; border-radius:50%; background:#F1E9DD; color:#2C1E16; display:flex; align-items:center; justify-content:center; font-size:32px; font-weight:700; overflow:hidden; }
+.profil-avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+.profil-nama{ font-size:17px; font-weight:800; color:#2C1E16; margin:0 0 2px; line-height:1.25; }
+.profil-sub{ font-size:12.5px; color:#6B584C; margin:0 0 10px; }
+.profil-note{ font-size:12.5px; color:#6B584C; line-height:1.55; margin:14px 0 0; }
+.profil-hint{ font-size:13px; color:#6B584C; margin-top:6px; }
+.profil-div{ height:1px; background:#E2D5C3; margin:16px 0 4px; }
+.profil-form{ display:flex; flex-direction:column; gap:6px; }
+.profil-label{ font-size:13px; font-weight:700; color:#2C1E16; margin-top:10px; }
+.profil-input{ padding:11px 13px; border:1.5px solid #E2D5C3; border-radius:11px; font:inherit; font-size:14px; background:#fff; color:#2C1E16; }
+.profil-input:focus{ outline:none; border-color:#9A4A20; }
+.profil-input[readonly]{ background:#F1E9DD; color:#6B584C; }
+.pw-wrap{ position:relative; display:flex; }
+.pw-wrap .profil-input{ flex:1; padding-right:52px; }
+.pw-eye{ position:absolute; right:4px; top:50%; transform:translateY(-50%); width:44px; height:44px; border:0; background:transparent; color:#6B584C; display:flex; align-items:center; justify-content:center; cursor:pointer; border-radius:8px; }
+.pw-eye svg{ width:20px; height:20px; }
+.pw-eye .ic-eyeoff{ display:none; }
+.pw-eye.on .ic-eye{ display:none; }
+.pw-eye.on .ic-eyeoff{ display:block; }
+.pw-eye{ margin:0; }
+.pw-eye:hover, .pw-eye:active{ background:transparent; }
+.profil-save{ width:100%; height:48px; border-radius:12px; font-size:15px; margin-top:18px; }
+/* MODE GELAP: pilihan tema — dua tombol radio berdampingan di dalam .notif-row. */
+.tema-pilih{ display:flex; gap:8px; flex:0 0 auto; }
+.tema-pilih label{ display:flex; align-items:center; gap:7px; font-size:14px; font-weight:600; color:#6B584C; border:1.5px solid #E2D5C3; border-radius:999px; padding:8px 14px; cursor:pointer; white-space:nowrap; }
+.tema-pilih input{ accent-color:#9A4A20; margin:0; width:16px; height:16px; cursor:pointer; }
+.tema-pilih label:has(input:checked){ color:#2C1E16; border-color:#9A4A20; background:#F1E9DD; }
+</style>
+</head>
+<body class="customer-page profil-page">
+<a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="dashboard.html" aria-label="Kembali ke Beranda Mampir Kopi">
+      <span class="cup-icon">
+        <img src="img/logo-mampir-kopi.svg" alt="" width="100" height="100">
+      </span>
+      <span class="brand-name">Mampir Kopi</span>
+    </a>
+    <nav class="nav-links">
+      <a href="dashboard.html">Beranda</a>
+      <a href="menu.html">Menu</a>
+      <a href="keranjang.html">Keranjang</a>
+      <a href="riwayat.html">Riwayat</a>
+      <a href="lacak.html">Lacak</a>
+      <a href="wishlist.html">Wishlist</a>
+    </nav>
+    <div class="nav-user">
+      <span class="avatar"></span>
+      <span>Memuat akun...</span>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+  </div>
+</header>
+<main class="container" id="konten">
+  <section class="page-heading" data-reveal>
+    <p class="page-kicker">AKUN SAYA</p>
+    <h1>Edit Profil</h1>
+    <p>Ganti foto profil, username, email, dan password kamu.</p>
+  </section>
+
+  <section class="profil-card">
+    <div class="profil-head">
+      <label class="profil-ava" for="profFile" title="Ganti foto profil">
+        <span class="profil-avatar" id="profAvatar"></span>
+      </label>
+      <div class="profil-id">
+        <p class="profil-nama" id="profNamaTampil">Memuat...</p>
+        <p class="profil-sub" id="profSub"></p>
+        <label class="btn btn-ghost btn-sm" for="profFile">Ganti Foto</label>
+        <button class="btn btn-ghost btn-sm" id="btnHapusFoto" type="button" hidden>Hapus Foto</button>
+        <input type="file" id="profFile" accept="image/jpeg,image/png,image/webp" hidden>
+      </div>
+    </div>
+    <p class="profil-note">Format JPG, PNG, atau WebP, maksimal 2MB. Foto tersimpan di database, jadi tetap ada walau folder website ditimpa pembaruan.</p>
+    <div class="profil-div"></div>
+    <div class="profil-form">
+      <label class="profil-label" for="profNama">Nama</label>
+      <input class="profil-input" type="text" id="profNama" maxlength="100" autocomplete="name">
+      <label class="profil-label" for="profUsername">Username</label>
+      <input class="profil-input" type="text" id="profUsername" maxlength="30" autocomplete="username" autocapitalize="none">
+      <p class="profil-hint">3-30 karakter: huruf kecil, angka, atau underscore (_). Huruf besar otomatis menjadi huruf kecil.</p>
+      <label class="profil-label" for="profEmail">Email</label>
+      <input class="profil-input" type="email" id="profEmail" autocomplete="email">
+      <p class="profil-hint">Dipakai untuk masuk sebagai pengganti username.</p>
+      <div class="profil-div"></div>
+      <label class="profil-label" for="profPwLama">Password Saat Ini</label>
+      <div class="pw-wrap"><input class="profil-input" type="password" id="profPwLama" autocomplete="current-password"><button type="button" class="pw-eye" data-pw="profPwLama" aria-label="Tampilkan password"><svg class="ic-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="ic-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></div>
+      <label class="profil-label" for="profPwBaru">Password Baru</label>
+      <div class="pw-wrap"><input class="profil-input" type="password" id="profPwBaru" autocomplete="new-password"><button type="button" class="pw-eye" data-pw="profPwBaru" aria-label="Tampilkan password"><svg class="ic-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="ic-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></div>
+      <label class="profil-label" for="profPwUlang">Ulangi Password Baru</label>
+      <div class="pw-wrap"><input class="profil-input" type="password" id="profPwUlang" autocomplete="new-password"><button type="button" class="pw-eye" data-pw="profPwUlang" aria-label="Tampilkan password"><svg class="ic-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="ic-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></div>
+      <p class="profil-note">Password Saat Ini wajib diisi bila mengganti username, email, atau password. Kosongkan semua kolom password bila tidak mengubah ketiganya.</p>
+      <div class="notif-row">
+        <p><b>Notifikasi status pesanan</b>Pengingat di dalam web saat pesananmu diproses dan selesai.</p>
+        <label class="switch"><input type="checkbox" id="profNotif" checked><i></i></label>
+      </div>
+      <div class="notif-row">
+        <p><b>Tema tampilan</b>Terang atau gelap — halaman langsung berubah begitu dipilih, tersimpan saat tombol Simpan ditekan.</p>
+        <div class="tema-pilih" role="radiogroup" aria-label="Tema tampilan">
+          <label><input type="radio" name="tema" value="terang" checked>Terang</label>
+          <label><input type="radio" name="tema" value="gelap">Gelap</label>
+        </div>
+      </div>
+      <button class="btn btn-primary profil-save" id="btnProfilSimpan" type="button">Simpan Perubahan</button>
+    </div>
+  </section>
+</main>
+
+<div class="container">
+  <footer class="guest-footer" data-reveal>
+    <div class="guest-footer-brand">
+      <span>Mampir Kopi</span>
+      <span>Tempat singgah, rasa istimewa.</span>
+    </div>
+    <nav class="guest-footer-links" aria-label="Jelajahi Mampir Kopi">
+      <a href="tentang.html">Tentang Kami</a>
+      <a href="promo.html">Promo</a>
+      <a href="blog.html">Blog</a>
+      <a href="testimoni.html">Testimoni</a>
+      <a href="faq.html">FAQ</a>
+      <a href="kontak.html">Kontak Kami</a>
+      <a href="syarat.html">Syarat &amp; Ketentuan</a>
+      <a href="privasi.html">Kebijakan Privasi</a>
+    </nav>
+    <a class="guest-instagram" href="https://www.instagram.com/mampir.kopi_" target="_blank" rel="noopener noreferrer" aria-label="Instagram Mampir Kopi (buka tab baru)">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="instagram-dot" cx="17.5" cy="6.5" r="1"/></svg>
+      <span>@mampir.kopi_</span>
+    </a>
+    <div class="guest-footer-meta">
+      <span>Jl. Ff No. 24, Sukabumi Selatan, Kebon Jeruk, Jakarta Barat 11560</span>
+      <span>Buka setiap hari 08.00–22.00 WIB</span>
+      <span>© 2026 Mampir Kopi</span>
+    </div>
+  </footer>
+</div>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/SplitText.min.js"></script>
+<script src="js/motion.js?v=20261122u"></script>
+<script src="js/app.js?v=20261122a"></script>
+<script src="js/shop.js?v=20261122r"></script>
+  <nav class="tabbar" aria-label="Navigasi utama">
+    <a href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg><span>Beranda</span></a>
+    <a href="menu.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Z"/><path d="M17 10h1a3 3 0 0 1 0 6h-1"/><path d="M8 5c-1-1 1-2 0-3M12 5c-1-1 1-2 0-3"/></svg><span>Menu</span></a>
+    <a href="keranjang.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>Keranjang</span><span class="tab-badge" hidden>0</span></a>
+    <a href="riwayat.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Riwayat</span></a>
+    <a href="profil.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Profil</span></a>
+  </nav>
+</body>
+</html>

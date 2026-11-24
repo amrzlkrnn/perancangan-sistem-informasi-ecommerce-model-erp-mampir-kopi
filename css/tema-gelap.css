@@ -1,0 +1,419 @@
+/* ============================================================
+   MAMPIR KOPI — MODE GELAP (22 Nov 2026, Amar: "tambahin fitur
+   mode terang dan gelap di pengaturan user, nanti webnya ganti
+   menjadi warna gelap tapi masih bisa terlihat")
+   Dimuat TERAKHIR (setelah awwwards.css) di 8 halaman USER
+   (dashboard, menu, keranjang, pesanan, riwayat, wishlist, profil,
+   pembayaran) + 12 halaman TAMU (22 Nov 16:54, Amar: "buat semua
+   konsisten ke darkmode jika darkmode sudah dinyalakan kecuali
+   untuk admin"). TIDAK dimuat di admin.html (admin tetap putih)
+   dan login.html (belum masuk). Semua aturan di bawah
+   html[data-tema="gelap"] — mode terang tidak berubah sama sekali.
+   Palet "Kedai Malam": ground #1A130E, permukaan #2E2118, teks krem
+   #F5EFE6 (16,07:1), muted #C9BBA6 (9,74:1), emas #E8C88A, karamel
+   terang #E08A4C (6,92:1) untuk teks aksen kecil di gelap.
+   JEBAKAN DAYPART: ground diatur html[data-daypart="..."] (0,1,1);
+   blok token di bawah ini juga (0,1,1) dan menang lewat urutan file.
+   JEBAKAN FLIP: aturan yang memakai var(--aw-ink)/var(--ink) sebagai
+   LATAR (footer, panel hero, tombol) akan jadi krem di mode gelap —
+   semuanya ditimpa eksplisit di bawah.
+   ============================================================ */
+
+/* ---------- 0. Token: definisi ulang palet ---------- */
+html[data-tema="gelap"]{
+  color-scheme:dark;
+  --aw-ground:#1A130E;
+  --aw-ink:#F5EFE6;
+  --aw-muted:#C9BBA6;
+  --aw-line:rgba(245,239,230,.16);
+  --aw-accent:#E08A4C;
+  --aw-accent-deep:#E8C88A;
+  --aw-paper:#2E2118;
+  --aw-sun:#B98A4A; /* matahari redup — pijar lampu kedai, bukan siang */
+  --ink-soft:#C9BBA6;
+  --muted:#C9BBA6; /* 22 Nov 16:56 (audit kontras): --muted dipakai 44×
+     HANYA sebagai warna teks (tidak pernah latar/border — dicek via
+     grep), jadi aman didefinisi ulang. Memperbaiki sekaligus sub-judul
+     halaman user, teks sekunder, dan label yang masih cokelat gelap
+     #6B584C di ground gelap (2,73:1). --ink SENGAJA tidak diubah
+     (jebakan FLIP: dipakai sebagai latar). */
+  --line-soft:rgba(245,239,230,.08);
+  --cream-2:#241610;
+  --tag-green-bg:#1E3A28; --tag-green-fg:#8CC79B;
+  --tag-amber-bg:#3A2A18; --tag-amber-fg:#E8C88A;
+  --shadow-card:0 1px 2px rgba(0,0,0,.35), 0 1px 0 rgba(0,0,0,.25);
+}
+/* Token --home-* (dashboard.css, hardcoded di .dashboard-page). */
+html[data-tema="gelap"] .dashboard-page{
+  --home-ink:#F5EFE6; --home-muted:#C9BBA6;
+  --home-coffee:#E08A4C; --home-paper:#2E2118;
+  background:#1A130E;
+}
+/* Token --customer-* (customer-theme.css, dipakai 64× di halaman user). */
+html[data-tema="gelap"] .customer-page{
+  --customer-ink:#F5EFE6; --customer-coffee:#E08A4C;
+  --customer-muted:#C9BBA6; --customer-line:#4A3728;
+  --customer-paper:#2E2118;
+}
+
+/* ---------- 1. Ground / body ---------- */
+html[data-tema="gelap"] body{ background:#1A130E; color:#F5EFE6; }
+html[data-tema="gelap"] ::selection{ background:#E8C88A; color:#1A130E; }
+
+/* ---------- 2. Topbar / navigasi ---------- */
+html[data-tema="gelap"] .dashboard-page .topbar{ background:rgba(26,19,14,.96); border-bottom-color:#4A3728; }
+/* Ikon cangkir: tetap gelap supaya logo SVG tidak berubah. */
+html[data-tema="gelap"] .brand .cup-icon{ background:#241610; border:1px solid #4A3728; }
+html[data-tema="gelap"] .dashboard-page .brand .cup-icon{ background:#241610; }
+/* Avatar di halaman customer-theme (menu dkk.): bg hardcoded #F1E9DD. */
+html[data-tema="gelap"] .customer-page .avatar{ background:#241610; color:#F5EFE6; }
+/* Topbar halaman customer-theme: bg terang hardcoded. */
+html[data-tema="gelap"] .customer-page .topbar{ background:rgba(26,19,14,.96); border-bottom-color:#4A3728; }
+/* .topbar, .nav-links a, .avatar mengikuti token (var --paper/--line/
+   --muted/--ink/--cream-2) — tidak perlu aturan tambahan. */
+
+/* ---------- 3. Tombol ---------- */
+/* Tombol utama jadi emas (teks gelap 11,42:1). Tanpa ini, .btn-primary
+   (awwwards: bg var(--aw-ink)) jadi krem — terbaca, tapi tombol emas
+   lebih tegas sebagai aksen "Kedai Malam" dan menutup jebakan hover
+   customer-theme (:hover bg #2C1E16 + teks gelap = tidak terbaca). */
+html[data-tema="gelap"] .btn-primary{ background:#E8C88A; color:#1A130E; }
+html[data-tema="gelap"] .btn-primary:hover{ background:#F0D6A0; opacity:1; }
+html[data-tema="gelap"] .dashboard-page .hero .btn-primary{ background:#E8C88A; color:#1A130E; }
+html[data-tema="gelap"] .dashboard-page .hero .btn-primary:hover{ background:#F0D6A0; }
+html[data-tema="gelap"] .customer-page .btn-primary:hover{ background:#F0D6A0; opacity:1; }
+/* Tombol + di kartu menu: var(--aw-ink) + teks #fff = krem + putih. */
+html[data-tema="gelap"] .product-add{ background:#E8C88A; color:#1A130E; }
+html[data-tema="gelap"] .product-card .product-add:hover{ background:#F0D6A0; color:#1A130E; }
+/* .product-add.added tetap hijau #3B6E4C (teks putih 5,22:1) — penanda "sudah ditambah". */
+/* Lencana jumlah: var(--ink) + #fff = krem + putih. */
+html[data-tema="gelap"] .cart-badge{ background:#E8C88A; color:#1A130E; }
+html[data-tema="gelap"] .tabbar .tab-badge{ background:#E8C88A; color:#1A130E; }
+html[data-tema="gelap"] .menu-page .back-to-top{ background:#E8C88A; color:#1A130E; border-color:rgba(232,200,138,.6); }
+html[data-tema="gelap"] .menu-page .back-to-top:hover{ background:#F0D6A0; }
+html[data-tema="gelap"] .menu-page .back-to-top:focus-visible{ outline-color:#E8C88A; }
+/* .btn-ghost, .text-btn, .quick-btn mengikuti token — tidak perlu aturan. */
+
+/* ---------- 4. Hero ---------- */
+/* Panel foto hero (§20a): background var(--aw-ink) akan jadi krem. */
+html[data-tema="gelap"] .hero-media{ background:#241610; }
+html[data-tema="gelap"] .hero-media img{ box-shadow:none; }
+/* Hero tamu kini SAMA dengan hero dasbor (22 Nov: blok espresso §22b
+   dihapus atas perintah Amar) — teks hero, kicker, meta mengikuti
+   token --aw-ink/--aw-muted; galeri sudah gelap. */
+
+/* ---------- 5. Kartu & panel ---------- */
+/* .product-card, .customize-card, .summary-box, #cartList, .stat-row
+   (awwwards) mengikuti token --paper/--line. Yang hardcoded: */
+html[data-tema="gelap"] .product-thumb{ background:linear-gradient(155deg,#241610,#2E2118); }
+html[data-tema="gelap"] .product-card.habis .product-thumb::after{ background:rgba(26,19,14,.62); color:#F5EFE6; }
+html[data-tema="gelap"] .menu-tag{ background:#E8C88A; color:#1A130E; }
+html[data-tema="gelap"] .product-wish{ background:rgba(46,33,24,.92); border-color:#4A3728; color:#C9BBA6; }
+html[data-tema="gelap"] .dashboard-page .favorite-card{ border-color:#4A3728; }
+html[data-tema="gelap"] .dashboard-page .favorite-card:hover{ border-color:#6B584C; }
+html[data-tema="gelap"] .dashboard-page .favorite-card .product-thumb{ background:#241610; }
+html[data-tema="gelap"] .dashboard-page .stat-row{ background:#2E2118; border-color:#4A3728; }
+html[data-tema="gelap"] .dashboard-page .stat-card + .stat-card{ border-left-color:#4A3728 !important; }
+html[data-tema="gelap"] .dashboard-page .stat-sub{ color:#C9BBA6; }
+/* Pesanan Terakhir (dashboard.css, hardcoded putih). */
+html[data-tema="gelap"] .dashboard-page .pesanan-card{ background:#2E2118; border-color:#4A3728; }
+html[data-tema="gelap"] .dashboard-page .pesanan-kode{ color:#F5EFE6; }
+html[data-tema="gelap"] .dashboard-page .pesanan-tgl{ color:#C9BBA6; }
+html[data-tema="gelap"] .dashboard-page .pesanan-menu{ color:#F5EFE6; }
+html[data-tema="gelap"] .dashboard-page .pesanan-total{ color:#F5EFE6; }
+html[data-tema="gelap"] .dashboard-page .pesanan-terakhir .empty-state{ background:#2E2118; border-color:#4A3728; }
+html[data-tema="gelap"] .dashboard-page .pesanan-terakhir .empty-state b{ color:#F5EFE6; }
+html[data-tema="gelap"] .dashboard-page .pesanan-terakhir .empty-state p{ color:#C9BBA6; }
+/* Kartu fitur (fitur.css, hardcoded putih). */
+html[data-tema="gelap"] .info-card,
+html[data-tema="gelap"] .faq-item,
+html[data-tema="gelap"] .testi-card,
+html[data-tema="gelap"] .blog-card,
+html[data-tema="gelap"] .promo-card,
+html[data-tema="gelap"] .ambil-row,
+html[data-tema="gelap"] .notif-row{ background:#2E2118; border-color:#4A3728; }
+html[data-tema="gelap"] .info-card p,
+html[data-tema="gelap"] .info-card li,
+html[data-tema="gelap"] .prose p,
+html[data-tema="gelap"] .faq-item .faq-body,
+html[data-tema="gelap"] .testi-card p,
+html[data-tema="gelap"] .blog-card p,
+html[data-tema="gelap"] .promo-card p,
+html[data-tema="gelap"] .notif-row p,
+html[data-tema="gelap"] .page-hero .lead,
+html[data-tema="gelap"] .f-note,
+html[data-tema="gelap"] .wish-empty{ color:#C9BBA6; }
+html[data-tema="gelap"] .faq-item summary,
+html[data-tema="gelap"] .testi-card b,
+html[data-tema="gelap"] .blog-card h3 a,
+html[data-tema="gelap"] .promo-card .kode,
+html[data-tema="gelap"] .ambil-row,
+html[data-tema="gelap"] .notif-row b{ color:#F5EFE6; }
+html[data-tema="gelap"] .faq-item summary::after{ color:#E08A4C; }
+html[data-tema="gelap"] .blog-card .tgl,
+html[data-tema="gelap"] .testi-card .tgl{ color:#A08E7A; }
+html[data-tema="gelap"] .testi-card .bintang{ color:#E08A4C; }
+html[data-tema="gelap"] .testi-avatar{ background:#4A3728; }
+html[data-tema="gelap"] .testi-inisial{ background:#E8C88A; color:#1A130E; }
+html[data-tema="gelap"] .star-pick button{ color:#4A3728; }
+html[data-tema="gelap"] .star-pick button.on{ color:#E08A4C; }
+html[data-tema="gelap"] .star-pick button:focus-visible{ outline-color:#E08A4C; }
+html[data-tema="gelap"] .blog-card img,
+html[data-tema="gelap"] .artikel-body img{ background:#241610; }
+/* Kartu profil (profil.html, <style> inline). */
+html[data-tema="gelap"] .profil-card{ background:#2E2118; border-color:#4A3728; }
+html[data-tema="gelap"] .profil-avatar{ background:#241610; color:#F5EFE6; }
+html[data-tema="gelap"] .profil-nama{ color:#F5EFE6; }
+html[data-tema="gelap"] .profil-sub,
+html[data-tema="gelap"] .profil-note,
+html[data-tema="gelap"] .profil-hint{ color:#C9BBA6; }
+html[data-tema="gelap"] .profil-div{ background:#4A3728; }
+html[data-tema="gelap"] .profil-label{ color:#F5EFE6; }
+html[data-tema="gelap"] .pw-eye{ color:#C9BBA6; }
+/* Panel judul halaman (menu, riwayat, dkk.): gradien putih hardcoded. */
+html[data-tema="gelap"] .customer-page .page-heading,
+html[data-tema="gelap"] .menu-page .menu-head{
+  background:linear-gradient(120deg,#2E2118 0%,#241610 100%);
+  border-color:#4A3728;
+}
+/* Kicker menu: karamel gelap #9A4A20 hardcoded — tidak terbaca di panel gelap. */
+html[data-tema="gelap"] .menu-page .menu-kicker{ color:#E08A4C; }
+/* Header tabel riwayat: bg #F1E9DD hardcoded di customer-theme. */
+html[data-tema="gelap"] .customer-page thead th{ background:#241610; color:#C9BBA6; }
+
+/* ---------- 6. Teks sekunder yang hardcoded ---------- */
+html[data-tema="gelap"] .guest-category h3,
+html[data-tema="gelap"] .guest-nav-link,
+html[data-tema="gelap"] .menu-page .menu-description{ color:#C9BBA6; }
+html[data-tema="gelap"] .guest-nav-link:hover{ color:#F5EFE6; }
+html[data-tema="gelap"] .cat-num{ color:#E08A4C; }
+html[data-tema="gelap"] .guest-note{ color:#A08E7A; }
+html[data-tema="gelap"] .menu-page .menu-categories a{ color:#C9BBA6; }
+/* Kicker tamu, harga andalan, tautan intro mengikuti --aw-accent-deep (emas). */
+
+/* ---------- 7. Input / formulir ---------- */
+html[data-tema="gelap"] .f-field label,
+html[data-tema="gelap"] .f-field .f-label{ color:#F5EFE6; }
+html[data-tema="gelap"] .f-field input,
+html[data-tema="gelap"] .f-field textarea,
+html[data-tema="gelap"] .f-field select{
+  background:#241610; border-color:#4A3728; color:#F5EFE6;
+}
+html[data-tema="gelap"] .f-field input:focus,
+html[data-tema="gelap"] .f-field textarea:focus{ border-color:#E08A4C; }
+html[data-tema="gelap"] .profil-input{
+  background:#241610; border-color:#4A3728; color:#F5EFE6;
+}
+html[data-tema="gelap"] .profil-input:focus{ border-color:#E08A4C; }
+html[data-tema="gelap"] .profil-input[readonly]{ background:#241610; color:#C9BBA6; }
+html[data-tema="gelap"] .customer-page .voucher-row input{ background:#241610; color:#F5EFE6; }
+html[data-tema="gelap"] .detail-page .note{
+  background:#241610; border-color:#4A3728; color:#F5EFE6;
+}
+html[data-tema="gelap"] input::placeholder,
+html[data-tema="gelap"] textarea::placeholder{ color:#A08E7A; }
+/* Pilihan tema (profil.html): radio Terang/Gelap. */
+html[data-tema="gelap"] .tema-pilih label{ border-color:#4A3728; color:#C9BBA6; }
+html[data-tema="gelap"] .tema-pilih input{ accent-color:#E08A4C; }
+html[data-tema="gelap"] .tema-pilih label:has(input:checked){
+  color:#F5EFE6; border-color:#E08A4C; background:#241610;
+}
+/* Saklar notifikasi: trek mati gelap, trek hidup karamel (tanpa ini,
+   awwwards: trek checked = var(--aw-ink) = krem, kenop ikut krem). */
+html[data-tema="gelap"] .switch i{ background:#4A3728; }
+html[data-tema="gelap"] .switch i::after{ background:#F5EFE6; }
+html[data-tema="gelap"] .switch input:checked + i{ background:#E08A4C; }
+/* .search-box input (bg var(--cream)), .select-box select (bg var(--paper)),
+   .qty-btn (bg var(--paper)) mengikuti token. */
+
+/* ---------- 8. Pilihan (pill / radio / tab) ---------- */
+/* Pilihan terpilih: var(--ink) + teks #fff = krem + putih. */
+html[data-tema="gelap"] .pill.selected,
+html[data-tema="gelap"] .detail-page .pill.selected{
+  background:#E8C88A; border-color:#E8C88A; color:#1A130E;
+}
+html[data-tema="gelap"] .pill.selected small,
+html[data-tema="gelap"] .detail-page .pill.selected small{ color:#4A3524; }
+html[data-tema="gelap"] .detail-page .pill{ background:#241610; border-color:#4A3728; }
+html[data-tema="gelap"] .detail-page .pill:hover{ border-color:#6B584C; }
+html[data-tema="gelap"] .detail-page .qty-btn,
+html[data-tema="gelap"] .detail-page .qty-value{ border-color:#4A3728; }
+html[data-tema="gelap"] .riwayat-tabs button.active{
+  background:#E8C88A; color:#1A130E; border-color:#E8C88A;
+}
+/* .radio.on (border + titik var(--ink) = krem) tetap terbaca di gelap. */
+
+/* ---------- 9. Chip status / peringatan ---------- */
+html[data-tema="gelap"] .tag.menunggu{ background:#3A2E24; color:#C9BBA6; }
+html[data-tema="gelap"] .tag.dibatalkan{ background:#3A1F1A; color:#F08A7B; }
+html[data-tema="gelap"] .customer-page .tag.selesai{ background:#1E3A28; color:#8CC79B; }
+html[data-tema="gelap"] .customer-page .tag.diproses{ background:#3A2A18; color:#E8C88A; }
+html[data-tema="gelap"] .customer-page .tag.menunggu{ background:#3A2E24; color:#C9BBA6; }
+html[data-tema="gelap"] .customer-page .tag.dibatalkan{ background:#3A1F1A; color:#F08A7B; }
+html[data-tema="gelap"] .payment-page .pay-timer.menipis{
+  border-color:#7A3A30; background:#3A1F1A; color:#F08A7B;
+}
+html[data-tema="gelap"] .batas-bayar{ color:#F08A7B; }
+html[data-tema="gelap"] .voucher-msg.ok{ color:#8CC79B; }
+html[data-tema="gelap"] .voucher-msg.err{ color:#F08A7B; }
+html[data-tema="gelap"] .summary-row.diskon span:last-child{ color:#8CC79B; }
+
+/* ---------- 10. Keranjang / checkout ---------- */
+html[data-tema="gelap"] .detail-page .customize-card{ border-color:#4A3728; }
+html[data-tema="gelap"] .detail-page .customize-photo{ background:linear-gradient(145deg,#241610,#2E2118); }
+html[data-tema="gelap"] .detail-page .option-group{ border-bottom-color:#4A3728; }
+html[data-tema="gelap"] .detail-page .back-link:hover{ border-color:#4A3728; background:#2E2118; }
+html[data-tema="gelap"] .cart-page #cartList{ border-color:#4A3728; }
+/* (Aturan border-bottom-color .cart-item dihapus 22 Nov 17:32 — item
+   keranjang kini kartu penuh §24 awwwards.css, bukan baris bersekat;
+   border kartu #E2D5C3 seragam di keempat sisi, sama seperti kartu menu.) */
+html[data-tema="gelap"] .customer-page .cart-thumb{ background:#241610; }
+html[data-tema="gelap"] .customer-page .cart-info .note{ color:#C9BBA6; }
+html[data-tema="gelap"] .customer-page .cart-qty button{
+  background:#2E2118; border-color:#4A3728; color:#F5EFE6;
+}
+html[data-tema="gelap"] .customer-page .cart-qty button:hover{ border-color:#6B584C; background:#241610; }
+html[data-tema="gelap"] .customer-page .trash-btn{ color:#C9BBA6; }
+html[data-tema="gelap"] .customer-page .trash-btn:hover{ color:#F08A7B; }
+html[data-tema="gelap"] .customer-page .summary-row{ color:#C9BBA6; }
+/* .summary-box, .pay-detail, .notice-box, .qr-box
+   mengikuti token. .qr-code (termasuk QRIS asli) SENGAJA tetap putih —
+   kode QR harus kontras penuh supaya tetap bisa dipindai. */
+/* .cart-qty button TIDAK mengikuti token: background-nya hardcoded
+   #fff di style.css — karena itu ada aturan eksplisit di atas
+   (22 Nov 17:24: tombol −/+ keranjang putih + glif krem tak terbaca
+   di mode gelap, dilaporkan Amar lewat video). */
+
+/* ---------- 11. Struk termal ---------- */
+/* Struk ikut gelap (kertas #2E2118 di atas modal #241610) — tetap mono,
+   tetap bergaris putus-putus, zigzag bawah tidak berubah. */
+html[data-tema="gelap"] .struk{
+  background:#2E2118; color:#F5EFE6; border-color:#4A3728;
+}
+html[data-tema="gelap"] .struk-sub,
+html[data-tema="gelap"] .struk-var{ color:#C9BBA6; }
+html[data-tema="gelap"] .struk-dash{ border-top-color:#4A3728; }
+
+/* ---------- 12. Modal & toast ---------- */
+html[data-tema="gelap"] .mk-modal{ background:rgba(0,0,0,.62); }
+html[data-tema="gelap"] .mk-box{ background:#241610; }
+html[data-tema="gelap"] .mk-success .ck{ background:#1E3A28; color:#8CC79B; }
+/* Toast dibalik: krem terang di atas ground gelap (teks gelap 14,08:1).
+   Tanpa ini, toast (bg var(--ink)) jadi krem dengan teks PUTIH. */
+html[data-tema="gelap"] .mk-toast{ background:#F5EFE6; color:#1A130E; }
+html[data-tema="gelap"] .mk-toast.err{ background:#B9382C; color:#FFFFFF; }
+/* .mk-close, .mk-meta, .mk-item .v, .mk-pay mengikuti token. */
+
+/* ---------- 13. Menu akun (dropdown) ---------- */
+html[data-tema="gelap"] .user-menu{ background:#2E2118; border-color:#4A3728; }
+html[data-tema="gelap"] .user-menu a,
+html[data-tema="gelap"] .user-menu button{ color:#F5EFE6; }
+html[data-tema="gelap"] .user-menu a:hover,
+html[data-tema="gelap"] .user-menu button:hover{ background:#241610; }
+
+/* ---------- 14. Header tamu ---------- */
+html[data-tema="gelap"] .guest-login{ border-color:#4A3728; color:#F5EFE6; }
+html[data-tema="gelap"] .guest-login:hover{ background:#2E2118; }
+html[data-tema="gelap"] .guest-register{ background:#E8C88A; border-color:#E8C88A; color:#1A130E; }
+html[data-tema="gelap"] .guest-register:hover{ background:#F0D6A0; border-color:#F0D6A0; color:#1A130E; }
+
+/* ---------- 15. Footer ---------- */
+/* Footer tamu + footer halaman: background var(--aw-ink) akan jadi krem. */
+html[data-tema="gelap"] .guest-footer,
+html[data-tema="gelap"] .page-footer{ background:#241610; }
+
+/* ---------- 16. Tabbar HP ---------- */
+@media (max-width:900px){
+  html[data-tema="gelap"] .tabbar{ background:rgba(26,19,14,.94); }
+  html[data-tema="gelap"] .tabbar a:active{ background:rgba(245,239,230,.08); }
+}
+/* Teks tab mengikuti --aw-muted; tab aktif --aw-accent (karamel terang). */
+
+/* ---------- 17. Lacak: timeline ---------- */
+html[data-tema="gelap"] .timeline .step{ color:#A08E7A; }
+html[data-tema="gelap"] .timeline .step::before,
+html[data-tema="gelap"] .timeline .step::after{ background:#4A3728; }
+html[data-tema="gelap"] .timeline .step.on{ color:#F5EFE6; }
+html[data-tema="gelap"] .timeline .step.on::before,
+html[data-tema="gelap"] .timeline .step.on::after{ background:#E08A4C; }
+
+/* ---------- 18. Menu: bar kategori, sidebar, tab riwayat ---------- */
+html[data-tema="gelap"] .menu-page .menu-categories{
+  border-color:#4A3728; background:#2E2118;
+}
+html[data-tema="gelap"] .menu-page .menu-categories a.active{
+  background:#E8C88A; color:#1A130E;
+}
+html[data-tema="gelap"] .menu-page .menu-categories a:hover:not(.active){
+  background:rgba(245,239,230,.08); color:#F5EFE6;
+}
+html[data-tema="gelap"] .sidebar{ background:#241610; }
+html[data-tema="gelap"] .sidebar a{ color:#C9BBA6; }
+html[data-tema="gelap"] .sidebar a.active{ background:#E8C88A; color:#1A130E; }
+html[data-tema="gelap"] .sidebar a:hover:not(.active){ color:#F5EFE6; }
+
+/* ---------- 19. Halaman tamu ---------- */
+/* Hero (§22b), galeri, dan footer tamu sudah gelap (#241610) di mode terang. */
+html[data-tema="gelap"] .tamu-intro{ border-top-color:#4A3728; }
+html[data-tema="gelap"] .guest-map-wrap{ border-color:#4A3728; }
+/* Peta Google di dalam iframe tetap terang (konten Google, tidak bisa
+   diwarnai ulang dari CSS) — batas gelap menandainya sebagai sisipan. */
+html[data-tema="gelap"] .guest-map-fallback{ background:#2E2118; border-color:#4A3728; }
+
+/* ---------- 20. HP: pembatas stat ---------- */
+@media (max-width:640px){
+  html[data-tema="gelap"] .dashboard-page .stat-card + .stat-card{ border-top-color:#4A3728 !important; }
+}
+
+/* ---------- 21. Mode gelap global: temuan audit kontras (22 Nov 16:54–16:56) ----------
+   Audit puppeteer 20+ halaman (teks + latar, target ≥4,5:1) menemukan
+   permukaan yang masih putih + teks hardcoded yang tenggelam. Semua
+   diperbaiki di sini; yang SENGAJA tetap terang: iframe Maps, gambar
+   QR/QRIS, dan chip logo metode bayar (.pay-icon) — ketiganya butuh
+   kontras penuh supaya terbaca/dipindai. */
+
+/* 21a. Lokasi tamu (tamu.html): section putih #FFFFFF + h2/alamat/
+   tautan hardcoded gelap — kicker emas 1,61:1, alamat 1,88:1. */
+html[data-tema="gelap"] .guest-location{ background:#2E2118; border-color:#4A3728; }
+html[data-tema="gelap"] .guest-location-info h2{ color:#F5EFE6; }
+html[data-tema="gelap"] .guest-address{ color:#C9BBA6; }
+html[data-tema="gelap"] .guest-directions{ color:#E08A4C; }
+html[data-tema="gelap"] .guest-directions:hover{ color:#F5EFE6; }
+html[data-tema="gelap"] .guest-map-fallback p{ color:#C9BBA6; }
+
+/* 21b. Kicker halaman user: karamel gelap #9A4A20 hardcoded (2,95:1).
+   Sub-judul halaman (.page-heading>p): #6B584C hardcoded (2,73:1). */
+html[data-tema="gelap"] .page-kicker{ color:#E08A4C; }
+html[data-tema="gelap"] .customer-page .page-heading>p:last-child{ color:#C9BBA6; }
+
+/* 21c. Tombol jumlah keranjang: SUDAH di §10 (perbaikan parent 22 Nov
+   17:24, aturan dasar .customer-page .cart-qty button) — tidak
+   diduplikasi di sini supaya hanya ada satu sumber kebenaran. */
+
+/* 21d. Tautan kembali pesanan: bg #fff hardcoded (2,66:1). */
+html[data-tema="gelap"] .detail-page .back-link{ background:#2E2118; border-color:#4A3728; }
+
+/* 21e. Tab riwayat non-aktif: teks #6B584C + border terang (2,32:1).
+   :not(.active) + penegasan .active: aturan ini (0,3,2) seri dengan §8
+   dan menang lewat urutan file — tanpa ini tab aktif jadi teks krem
+   di atas emas (1,17:1, tertangkap audit ronde 2). */
+html[data-tema="gelap"] .customer-page .riwayat-tabs button:not(.active){ color:#C9BBA6; border-color:#4A3728; }
+html[data-tema="gelap"] .customer-page .riwayat-tabs button.active{ color:#1A130E; }
+html[data-tema="gelap"] .customer-page .riwayat-tabs button:hover{ border-color:#6B584C; }
+
+/* 21f. Metode pembayaran (Amar 16:54: "UI metode pembayaran juga
+   masih putih") — baris putih + teks krem = tidak terbaca (1,14:1
+   GoPay, 1,00:1 QRIS terpilih). */
+html[data-tema="gelap"] .payment-page .pay-method-row{ background:#2E2118; border-color:#4A3728; }
+html[data-tema="gelap"] .payment-page .pay-method-row:hover{ border-color:#6B584C; }
+html[data-tema="gelap"] .payment-page .pay-method-row.selected{ background:#1E3A28; border-color:#4C8A5D; box-shadow:0 0 0 2px rgba(140,199,155,.12); }
+html[data-tema="gelap"] .payment-page .pay-method-row:focus-visible{ outline-color:rgba(232,200,138,.55); }
+html[data-tema="gelap"] .payment-page .payment-method-count{ background:#241610; border:1px solid #4A3728; color:#C9BBA6; }
+html[data-tema="gelap"] .payment-page .payment-secure{ background:#1E3A28; border-color:#2E5A3A; color:#8CC79B; }
+html[data-tema="gelap"] .payment-page .pay-timer{ background:#3A2A18; border-color:#4A3728; color:#E8C88A; }
+html[data-tema="gelap"] .payment-page .pay-detail{ background:#241610; border-color:#4A3728; }
+html[data-tema="gelap"] .payment-page .payment-steps span{ background:#3A2A18; color:#E8C88A; }
+html[data-tema="gelap"] .payment-page .payment-steps p{ color:#C9BBA6; }
+html[data-tema="gelap"] .payment-page .payment-notice{ background:#241610; border-color:#4A3728; color:#C9BBA6; }
+html[data-tema="gelap"] .ambil-row small{ color:#E08A4C; }
+html[data-tema="gelap"] .ambil-row.selected{ background:#241610; border-color:#E08A4C; }

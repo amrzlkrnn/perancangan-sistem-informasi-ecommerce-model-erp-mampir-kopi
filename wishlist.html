@@ -1,0 +1,86 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<script>/* Tema gelap tanpa kilatan (22 Nov 16:34): baca cache localStorage SEBELUM cat pertama. */try{if(localStorage.getItem('mk_tema')==='gelap')document.documentElement.setAttribute('data-tema','gelap');}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mampir Kopi — Wishlist</title>
+  <link rel="canonical" href="http://localhost:8080/wishlist.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Mampir Kopi — Wishlist">
+  <meta property="og:description" content="Wishlist Mampir Kopi — menu favoritmu.">
+  <meta property="og:url" content="http://localhost:8080/wishlist.html">
+  <meta property="og:image" content="img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mampir Kopi — Wishlist">
+  <meta name="twitter:description" content="Wishlist Mampir Kopi — menu favoritmu.">
+  <meta name="twitter:image" content="img/og.jpg">
+<meta name="description" content="Mampir Kopi — kedai kopi di Kebon Jeruk, Jakarta Barat. Produk yang kamu simpan.">
+<link rel="icon" type="image/svg+xml" href="img/logo-mampir-kopi.svg">
+<link rel="stylesheet" href="css/fonts.css?v=20261122e">
+<link rel="stylesheet" href="css/style.css?v=20261122m">
+<link rel="stylesheet" href="css/tambahan.css?v=20261122m">
+<link rel="stylesheet" href="css/customer-theme.css?v=20261122m">
+<link rel="stylesheet" href="css/dashboard.css?v=20261122n">
+<link rel="stylesheet" href="css/fitur.css?v=20261122m">
+<link rel="stylesheet" href="css/animasi.css?v=20261122n">
+<link rel="stylesheet" href="css/awwwards.css?v=20261122t">
+<link rel="stylesheet" href="css/tema-gelap.css?v=20261122c">
+</head>
+<body class="dashboard-page customer-page">
+<a class="skip-link" href="#konten">Lewati ke konten utama</a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="dashboard.html" aria-label="Kembali ke Beranda Mampir Kopi">
+      <span class="cup-icon"><img src="img/logo-mampir-kopi.svg" alt="" width="100" height="100"></span>
+      <span class="brand-name">Mampir Kopi</span>
+    </a>
+    <nav class="nav-links">
+      <a href="dashboard.html">Beranda</a>
+      <a href="menu.html">Menu</a>
+      <a href="keranjang.html">Keranjang</a>
+      <a href="riwayat.html">Riwayat</a>
+      <a href="lacak.html">Lacak</a>
+      <a href="wishlist.html" class="active">Wishlist</a>
+    </nav>
+    <div class="nav-user">
+      <span class="avatar"></span>
+      <span>Memuat akun...</span>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+  </div>
+</header>
+<main class="container" id="konten">
+  <section class="page-hero">
+    <p class="guest-section-kicker">Wishlist</p>
+    <h1>Produk simpananmu</h1>
+    <p class="lead">Menu yang kamu tandai dengan hati di halaman Menu tersimpan di sini, siap dipesan kapan saja.</p>
+  </section>
+  <div id="wishList" class="grid grid-4"><p class="f-note">Memuat wishlist...</p></div>
+    <footer class="page-footer">
+    <span class="page-footer-brand">Mampir Kopi</span>
+    <nav aria-label="Jelajahi Mampir Kopi">
+      <a href="dashboard.html">Beranda</a>
+      <a href="menu.html">Menu</a>
+      <a href="keranjang.html">Keranjang</a>
+      <a href="riwayat.html">Riwayat</a>
+      <a href="wishlist.html">Wishlist</a>
+    </nav>
+    <span>Buka setiap hari 08.00–22.00 WIB · Kebon Jeruk, Jakarta Barat</span>
+  </footer>
+</main>
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/SplitText.min.js"></script>
+<script src="js/motion.js?v=20261122u"></script>
+<script src="js/app.js?v=20261122a"></script>
+<script src="js/shop.js?v=20261122r"></script>
+  <nav class="tabbar" aria-label="Navigasi utama">
+    <a href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg><span>Beranda</span></a>
+    <a href="menu.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Z"/><path d="M17 10h1a3 3 0 0 1 0 6h-1"/><path d="M8 5c-1-1 1-2 0-3M12 5c-1-1 1-2 0-3"/></svg><span>Menu</span></a>
+    <a href="keranjang.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>Keranjang</span><span class="tab-badge" hidden>0</span></a>
+    <a href="riwayat.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Riwayat</span></a>
+    <a href="profil.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Profil</span></a>
+  </nav>
+</body>
+</html>

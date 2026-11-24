@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<script>/* Tema gelap tanpa kilatan (22 Nov 16:34): baca cache localStorage SEBELUM cat pertama. */try{if(localStorage.getItem('mk_tema')==='gelap')document.documentElement.setAttribute('data-tema','gelap');}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mampir Kopi — Pembayaran</title>
+  <link rel="canonical" href="http://localhost:8080/pembayaran.html">
+  <meta property="og:url" content="http://localhost:8080/pembayaran.html">
+  <meta property="og:image" content="img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mampir Kopi — Pembayaran">
+  <meta name="twitter:description" content="Pembayaran Mampir Kopi — selesaikan pesananmu dengan QRIS, e-wallet, atau COD.">
+  <meta name="twitter:image" content="img/og.jpg">
+<meta name="description" content="Mampir Kopi — kedai kopi di Kebon Jeruk, Jakarta Barat. Lihat menu, pesan kopi susu, manual brew, dan minuman favoritmu.">
+<link rel="icon" type="image/svg+xml" href="img/logo-mampir-kopi.svg">
+<meta property="og:title" content="Mampir Kopi">
+<meta property="og:description" content="Mampir Kopi — kedai kopi di Kebon Jeruk, Jakarta Barat. Lihat menu, pesan kopi susu, manual brew, dan minuman favoritmu.">
+<meta property="og:type" content="website">
+<link rel="stylesheet" href="css/fonts.css?v=20261122e">
+<link rel="stylesheet" href="css/style.css?v=20261122m">
+<link rel="stylesheet" href="css/tambahan.css?v=20261122m">
+<link rel="stylesheet" href="css/customer-theme.css?v=20261122m">
+<link rel="stylesheet" href="css/fitur.css?v=20261122m">
+<link rel="stylesheet" href="css/animasi.css?v=20261122n">
+<link rel="stylesheet" href="css/awwwards.css?v=20261122t">
+<link rel="stylesheet" href="css/tema-gelap.css?v=20261122c">
+</head>
+<body class="customer-page payment-page">
+<a class="skip-link" href="#konten">Lewati ke konten utama</a>
+
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="dashboard.html" aria-label="Kembali ke Beranda Mampir Kopi">
+      <span class="cup-icon">
+        <img src="img/logo-mampir-kopi.svg" alt="" width="100" height="100">
+      </span>
+      <span class="brand-name">Mampir Kopi</span>
+    </a>
+    <nav class="nav-links">
+      <a href="dashboard.html">Beranda</a>
+      <a href="menu.html">Menu</a>
+      <a href="keranjang.html">Keranjang</a>
+      <a href="riwayat.html">Riwayat</a>
+      <a href="lacak.html">Lacak</a>
+      <a href="wishlist.html">Wishlist</a>
+    </nav>
+    <div class="nav-user">
+      <span class="avatar"></span>
+      <span>Memuat akun...</span>
+      <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+    </div>
+  </div>
+</header>
+
+<main class="container" id="konten">
+
+  <section class="page-heading payment-heading" data-reveal>
+    <p class="page-kicker">PEMBAYARAN AMAN</p>
+    <h1>Selesaikan Pesananmu</h1>
+    <p>Pilih cara bayar yang paling gampang buatmu.</p>
+  </section>
+
+  <div class="pay-layout">
+    <div class="pay-card">
+      <div class="payment-total">
+        <div>
+          <p class="pay-total-label">Total yang perlu dibayar</p>
+          <p class="pay-total-value" id="payTotal">Rp 0</p>
+        </div>
+        <span class="payment-secure"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><path d="M12 3 5 6v5c0 5 3 8 7 10 4-2 7-5 7-10V6l-7-3Z"/><path d="m9 12 2 2 4-4"/></svg>Pembayaran aman</span>
+      </div>
+      <p class="pay-total-sub" id="paySub"></p>
+      <p class="pay-timer" id="payTimer"><span aria-hidden="true">⏱</span><span>Setelah pesanan dibuat, pembayaran harus diselesaikan dalam 5 menit.</span></p>
+
+      <div class="payment-divider"></div>
+
+      <button id="payToggle" class="payment-detail-toggle" type="button" aria-expanded="false" aria-controls="payDetail">
+        <span>Rincian pesanan</span>
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" aria-hidden="true"><path d="M9 6l6 6-6 6"/></svg>
+      </button>
+
+      <div class="pay-detail" id="payDetail"></div>
+
+      <div class="payment-method-heading" style="margin-top:22px">
+        <div><h2>Cara pengambilan</h2><p>Ambil sendiri di kasir, atau kami antar ke alamatmu.</p></div>
+      </div>
+      <div class="ambil-list" id="ambilList">
+        <label class="ambil-row selected" data-ambil="Ambil di Kasir"><input type="radio" name="ambil" value="Ambil di Kasir" checked> Ambil di Kasir <small>Gratis</small></label>
+        <label class="ambil-row" data-ambil="Diantar"><input type="radio" name="ambil" value="Diantar"> Diantar ke alamat <small>+ Rp 5.000 ongkir</small></label>
+        <textarea id="alamatAntar" hidden placeholder="Tulis alamat lengkap pengantaran: jalan, nomor rumah, RT/RW, kelurahan, dan patokan"></textarea>
+      </div>
+
+      <div class="payment-method-heading">
+        <div><h2>Pilih metode pembayaran</h2><p>Scan QRIS / e-wallet, atau COD untuk pesanan yang diantar.</p></div>
+        <span class="payment-method-count">5 metode</span>
+      </div>
+      <div class="pay-method-list" role="radiogroup" aria-label="Metode pembayaran">
+        <div class="pay-method-row selected" role="radio" aria-checked="true" tabindex="0">
+          <div class="pay-method-left">
+            <span class="pay-icon"><img src="img/pay/qris.svg" alt="QRIS"></span> <span class="pay-name">QRIS</span>
+          </div>
+          <span class="payment-method-hint">Scan semua aplikasi<span class="radio on"></span></span>
+        </div>
+        <div class="pay-method-row" role="radio" aria-checked="false" tabindex="0">
+          <div class="pay-method-left">
+            <span class="pay-icon"><img src="img/pay/gopay.svg" alt="GoPay"></span> <span class="pay-name">GoPay</span>
+          </div>
+          <span class="payment-method-hint">E-wallet<span class="radio"></span></span>
+        </div>
+        <div class="pay-method-row" role="radio" aria-checked="false" tabindex="0">
+          <div class="pay-method-left">
+            <span class="pay-icon"><img src="img/pay/ovo.svg" alt="OVO"></span> <span class="pay-name">OVO</span>
+          </div>
+          <span class="payment-method-hint">E-wallet<span class="radio"></span></span>
+        </div>
+        <div class="pay-method-row" role="radio" aria-checked="false" tabindex="0">
+          <div class="pay-method-left">
+            <span class="pay-icon"><img src="img/pay/dana.svg" alt="DANA"></span> <span class="pay-name">DANA</span>
+          </div>
+          <span class="payment-method-hint">E-wallet<span class="radio"></span></span>
+        </div>
+        <div class="pay-method-row" role="radio" aria-checked="false" tabindex="0">
+          <div class="pay-method-left">
+            <span class="pay-icon"><img src="img/pay/shopeepay.svg" alt="ShopeePay"></span> <span class="pay-name">ShopeePay</span>
+          </div>
+          <span class="payment-method-hint">E-wallet<span class="radio"></span></span>
+        </div>
+        <div class="pay-method-row cod-row" role="radio" aria-checked="false" tabindex="0" hidden>
+          <div class="pay-method-left">
+            <span class="pay-icon"><span style="font-weight:800;font-size:11px;color:#9A4A20">COD</span></span> <span class="pay-name">COD</span>
+          </div>
+          <span class="payment-method-hint">Bayar tunai saat pesanan sampai<span class="radio"></span></span>
+        </div>
+      </div>
+    </div>
+
+    <div class="qr-box">
+      <div class="payment-qr-heading">
+        <span class="payment-qr-mark"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><rect x="3" y="3" width="7" height="7" rx="1"/><rect x="14" y="3" width="7" height="7" rx="1"/><rect x="3" y="14" width="7" height="7" rx="1"/><path d="M14 14h3v3h-3zM20 14v2M14 20h2M19 19h2v2h-2z"/></svg></span>
+        <div><p id="qrTitle">Bayar dengan QRIS</p><span>Pindai dari aplikasi pembayaranmu</span></div>
+      </div>
+      <div class="qr-code qr-real"><img src="img/qris.png?v=20261105a" alt="Kode QRIS Mampir Kopi"></div>
+      <div class="payment-steps">
+        <div><span>1</span><p>Buka aplikasi pembayaran</p></div>
+        <div><span>2</span><p>Pindai QRIS di atas</p></div>
+        <div><span>3</span><p>Konfirmasi pembayaran</p></div>
+      </div>
+      <button class="btn btn-primary btn-block payment-submit" id="btnBayar">Bayar Sekarang</button>
+      <div class="notice-box payment-notice">
+        <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5M12 8h.01"/></svg>
+        <span>Setelah pesanan dibuat, pembayaran akan menunggu verifikasi admin. Statusnya dapat dilihat di menu Riwayat.</span>
+      </div>
+      <div class="qr-summary">
+        <h3>Ringkasan pesanan</h3>
+        <div id="qrSummaryItems" class="qr-summary-items"></div>
+        <div class="qr-summary-total"><span>Total</span><b id="qrSummaryTotal">Rp 0</b></div>
+      </div>
+    </div>
+  </div>
+
+    <footer class="guest-footer" data-reveal>
+      <div class="guest-footer-brand">
+        <span>Mampir Kopi</span>
+        <span>Tempat singgah, rasa istimewa.</span>
+      </div>
+      <nav class="guest-footer-links" aria-label="Jelajahi Mampir Kopi">
+        <a href="tentang.html">Tentang Kami</a>
+        <a href="promo.html">Promo</a>
+        <a href="blog.html">Blog</a>
+        <a href="testimoni.html">Testimoni</a>
+        <a href="faq.html">FAQ</a>
+        <a href="kontak.html">Kontak Kami</a>
+        <a href="syarat.html">Syarat &amp; Ketentuan</a>
+        <a href="privasi.html">Kebijakan Privasi</a>
+      </nav>
+      <a class="guest-instagram" href="https://www.instagram.com/mampir.kopi_" target="_blank" rel="noopener noreferrer" aria-label="Instagram Mampir Kopi (buka tab baru)">
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="instagram-dot" cx="17.5" cy="6.5" r="1"/></svg>
+        <span>@mampir.kopi_</span>
+      </a>
+      <div class="guest-footer-meta">
+        <span>Jl. Ff No. 24, Sukabumi Selatan, Kebon Jeruk, Jakarta Barat 11560</span>
+        <span>Buka setiap hari 08.00–22.00 WIB</span>
+        <span>© 2026 Mampir Kopi</span>
+      </div>
+    </footer>
+</main>
+
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/SplitText.min.js"></script>
+<script src="js/motion.js?v=20261122u"></script>
+<script src="js/app.js?v=20261122a"></script>
+<script src="js/shop.js?v=20261122r"></script>
+  <nav class="tabbar" aria-label="Navigasi utama">
+    <a href="dashboard.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg><span>Beranda</span></a>
+    <a href="menu.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Z"/><path d="M17 10h1a3 3 0 0 1 0 6h-1"/><path d="M8 5c-1-1 1-2 0-3M12 5c-1-1 1-2 0-3"/></svg><span>Menu</span></a>
+    <a href="keranjang.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="9" cy="21" r="1"/><circle cx="20" cy="21" r="1"/><path d="M1 1h4l2.68 13.39a2 2 0 0 0 2 1.61h9.72a2 2 0 0 0 2-1.61L23 6H6"/></svg><span>Keranjang</span><span class="tab-badge" hidden>0</span></a>
+    <a href="riwayat.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 7v5l3 2"/></svg><span>Riwayat</span></a>
+    <a href="profil.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Profil</span></a>
+  </nav>
+</body>
+</html>

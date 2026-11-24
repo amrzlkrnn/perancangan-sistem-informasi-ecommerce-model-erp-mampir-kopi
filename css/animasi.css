@@ -1,0 +1,126 @@
+/* ============================================================
+   MAMPIR KOPI — animasi & pembatas (dimuat terakhir di semua
+   halaman pelanggan + login, agar gerak dan garis pemisah
+   konsisten antara halaman tamu dan dashboard pengguna)
+   ============================================================ */
+
+html{ scroll-behavior:smooth; }
+
+@keyframes mkFade{ from{ opacity:0; } to{ opacity:1; } }
+@keyframes mkFadeUp{ from{ opacity:0; transform:translateY(14px); } to{ opacity:1; transform:none; } }
+@keyframes mkPop{ 0%{ opacity:0; transform:scale(.92) translateY(16px); } 60%{ opacity:1; transform:scale(1.015) translateY(-2px); } 100%{ opacity:1; transform:none; } }
+
+/* ---------- Pembatas header & footer ---------- */
+.topbar{
+  border-bottom:1px solid #E2D5C3;
+  box-shadow:0 1px 0 rgba(255,253,248,.65), 0 12px 26px -20px rgba(41,53,45,.4);
+}
+.guest-footer{ border-top:1px solid #E2D5C3; }
+.page-space{ height:54px; margin-top:38px; border-top:1px solid #E2D5C3; }
+
+/* ---------- Animasi masuk ---------- */
+main{ animation:mkFade .35s ease both; }
+.hero-content > *{ animation:mkFadeUp .6s ease both; }
+.hero-content > *:nth-child(2){ animation-delay:.08s; }
+.hero-content > *:nth-child(3){ animation-delay:.16s; }
+.hero-content > *:nth-child(4){ animation-delay:.24s; }
+.promo-banner{ animation:mkFadeUp .55s ease .1s both; }
+
+/* Animasi masuk kartu-kartu DIHAPUS (diet animasi): yang bergerak hanya hero, banner, modal, dan toast. */
+
+/* ---------- Hover & sentuhan ----------
+   Angkat kartu pakai ease halus tanpa overshoot (22 Nov: bezier lama
+   cubic-bezier(.34,1.4,.64,1) membuat kartu memantul tiap hover). */
+.product-card, .favorite-card, .guest-product-card{ transition:transform .25s cubic-bezier(.22,.61,.36,1), box-shadow .25s ease; }
+.product-card:hover, .favorite-card:hover, .guest-product-card:hover{
+  transform:translateY(-3px);
+  box-shadow:0 16px 30px -18px rgba(41,53,45,.35);
+}
+.product-card img, .favorite-card img, .guest-product-card img{ transition:transform .5s ease; }
+.product-card:hover img, .favorite-card:hover img, .guest-product-card:hover img{ transform:scale(1.045); }
+
+.btn{ transition:transform .15s ease, background-color .15s ease, box-shadow .15s ease; }
+.btn:active{ transform:scale(.98); }
+.product-add{ transition:transform .15s ease; }
+.product-add:active{ transform:scale(.9); }
+.qty-btn{ transition:transform .12s ease; }
+.qty-btn:active{ transform:scale(.92); }
+.option-pills .pill{ transition:background-color .15s ease, color .15s ease, transform .15s ease; }
+.option-pills .pill:active{ transform:scale(.96); }
+input, select, textarea{ transition:border-color .15s ease, box-shadow .15s ease; }
+
+/* ---------- Modal, toast, login ---------- */
+.mk-modal{ animation:mkFade .18s ease both; }
+.mk-box{ animation:mkPop .22s ease both; }
+.mk-toast{ animation:mkFadeUp .25s ease both; }
+/* Kartu login (.box) dan kartu kustomisasi pesanan: pop memantul diganti
+   naik halus (22 Nov) — pantulan scale 1.015 di kartu besar terasa murahan.
+   mkPop dipertahankan hanya untuk modal kecil dan menu pengguna. */
+.box{ animation:mkFadeUp .45s ease both; }
+
+@media (prefers-reduced-motion: reduce){
+  html{ scroll-behavior:auto; }
+  *, *::before, *::after{
+    animation-duration:.01ms !important;
+    animation-iteration-count:1 !important;
+    transition-duration:.01ms !important;
+  }
+}
+
+/* ---------- Saat menu dipilih: terangkat + popup ---------- */
+.product-card:active, .favorite-card:active, .guest-product-card:active{
+  transform:translateY(-4px) scale(1.02);
+  box-shadow:0 18px 32px -16px rgba(41,53,45,.42);
+}
+.mk-box{ animation-duration:.3s; }
+.mk-box img{ animation:mkFadeUp .35s ease both; }
+
+/* Panel detail menu yang dipilih muncul memantul seperti popup */
+.customize-card{ animation-name:mkFadeUp; animation-duration:.38s; }
+
+/* ---------- Logo metode pembayaran, timer, batas bayar ---------- */
+.payment-page .pay-icon{ width:64px; height:38px; border-radius:9px; background:#fff; border:1px solid #E2D5C3; padding:4px 7px; }
+.payment-page .pay-icon img{ display:block; max-width:50px; max-height:28px; width:auto; height:auto; }
+.payment-page .pay-timer{ display:flex; align-items:center; gap:8px; margin:14px 0 2px; padding:10px 13px; border:1px solid #F1E9DD; background:#F1E9DD; border-radius:10px; font-size:12.5px; color:#9A4A20; }
+.payment-page .pay-timer[hidden]{ display:none; }
+.payment-page .pay-timer b{ font-variant-numeric:tabular-nums; }
+.payment-page .pay-timer.menipis{ border-color:#F2C4BC; background:#F9E9E6; color:#B9382C; }
+.batas-bayar{ margin-top:5px; font-size:11px; color:#B9382C; }
+.batas-bayar b{ font-variant-numeric:tabular-nums; }
+
+/* ---------- Avatar foto & menu akun ---------- */
+.nav-user{ position:relative; }
+.avatar{ overflow:hidden; }
+.avatar img{ width:100%; height:100%; display:block; object-fit:cover; border-radius:50%; }
+.user-menu{ position:absolute; right:0; top:calc(100% + 10px); min-width:180px; background:#FFFFFF; border:1px solid #E2D5C3; border-radius:12px; box-shadow:0 18px 36px -18px rgba(41,53,45,.35); padding:6px; z-index:80; animation:mkPop .18s ease both; }
+.user-menu[hidden]{ display:none; }
+/* Header tamu sadar login (22 Nov): .nav-user dan .guest-auth sama-sama
+   display:flex dari stylesheet lain, jadi atribut hidden saja tidak cukup. */
+.nav-user[hidden], .guest-auth[hidden]{ display:none; }
+.user-menu a, .user-menu button{ display:flex; width:100%; align-items:center; gap:8px; padding:9px 11px; border:0; background:none; font:inherit; font-size:13px; color:#2C1E16; text-align:left; border-radius:8px; cursor:pointer; text-decoration:none; box-sizing:border-box; }
+.user-menu a:hover, .user-menu button:hover{ background:#F1E9DD; }
+
+/* Atribut hidden harus selalu menang dari display bawaan class. */
+[hidden]{ display:none !important; }
+
+/* Tipografi khas: Fraunces untuk judul, Source Sans 3 untuk teks isi (font lokal). */
+:root{ --font:'Source Sans 3','Segoe UI',system-ui,-apple-system,sans-serif; }
+h1, h2, h3, .brand-name, .hero-cup span, .stat-value{ font-family:'Fraunces',Georgia,'Times New Roman',serif !important; font-optical-sizing:auto; }
+.ic-struk{ width:15px; height:15px; vertical-align:-2px; margin-right:6px; }
+
+/* ---------- Pecah keseragaman grid (warna tetap palet lama) ---------- */
+.cat-num{ font-family:'Fraunces',Georgia,serif; color:#9A4A20; margin-right:8px; letter-spacing:0; }
+.menu-tag{ position:absolute; top:10px; left:10px; z-index:2; background:#2C1E16; color:#FFFFFF; font-size:10px; font-weight:700; letter-spacing:.14em; padding:4px 9px; border-radius:999px; }
+.product-card.menu-featured{ grid-column:span 2; display:flex; flex-direction:row; align-items:stretch; }
+.product-card.menu-featured .product-thumb{ flex:0 0 46%; aspect-ratio:auto; height:auto; min-height:170px; }
+.product-card.menu-featured .product-thumb img{ position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.product-card.menu-featured .product-info{ display:flex; flex-direction:column; justify-content:center; padding:18px 20px; }
+.product-card.menu-featured .product-name{ font-family:'Fraunces',Georgia,serif; font-size:22px; line-height:1.2; }
+.product-card.menu-featured .product-price{ font-size:16px; margin-top:6px; }
+/* Statistik dashboard: satu panel putih terkotak tegas (permintaan Amar: dikurung, jangan melayang). */
+.dashboard-page .stat-row{ background:#FFFFFF; border:1px solid #E2D5C3; border-radius:10px; gap:0; overflow:hidden; box-shadow:none; }
+.dashboard-page .stat-card{ background:transparent !important; border:none !important; border-radius:0 !important; box-shadow:none !important; }
+.dashboard-page .stat-card + .stat-card{ border-left:1px solid #E2D5C3 !important; }
+@media (max-width:640px){
+  .dashboard-page .stat-card + .stat-card{ border-left:none !important; border-top:1px solid #E2D5C3 !important; }
+}

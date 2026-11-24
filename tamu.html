@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<script>/* Tema gelap tanpa kilatan (22 Nov 16:34): baca cache localStorage SEBELUM cat pertama. */try{if(localStorage.getItem('mk_tema')==='gelap')document.documentElement.setAttribute('data-tema','gelap');}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Mampir Kopi — Selamat Datang</title>
+  <link rel="canonical" href="http://localhost:8080/tamu.html">
+  <meta property="og:url" content="http://localhost:8080/tamu.html">
+  <meta property="og:image" content="img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Mampir Kopi — Selamat Datang">
+  <meta name="twitter:description" content="Mampir Kopi — kedai kopi di Kebon Jeruk, Jakarta Barat. Lihat menu, pesan kopi susu, manual brew, dan minuman favoritmu.">
+  <meta name="twitter:image" content="img/og.jpg">
+<meta name="description" content="Mampir Kopi — kedai kopi di Kebon Jeruk, Jakarta Barat. Lihat menu, pesan kopi susu, manual brew, dan minuman favoritmu.">
+<link rel="icon" type="image/svg+xml" href="img/logo-mampir-kopi.svg">
+<meta property="og:title" content="Mampir Kopi">
+<meta property="og:description" content="Mampir Kopi — kedai kopi di Kebon Jeruk, Jakarta Barat. Lihat menu, pesan kopi susu, manual brew, dan minuman favoritmu.">
+<meta property="og:type" content="website">
+<script type="application/ld+json">
+{"@context":"https://schema.org","@type":"CafeOrCoffeeShop","name":"Mampir Kopi","telephone":"+62 896-2264-2662","description":"Kedai kopi di Kebon Jeruk, Jakarta Barat — kopi susu, manual brew, dan minuman hangat dengan harga bersahabat.","url":"http://localhost:8080/tamu.html","address":{"@type":"PostalAddress","streetAddress":"Jl. Ff No. 24, RT.7/RW.5, Sukabumi Selatan","addressLocality":"Kebon Jeruk, Jakarta Barat","postalCode":"11560","addressCountry":"ID"},"openingHoursSpecification":{"@type":"OpeningHoursSpecification","dayOfWeek":["Monday","Tuesday","Wednesday","Thursday","Friday","Saturday","Sunday"],"opens":"08:00","closes":"22:00"},"priceRange":"Rp5.000 - Rp22.000","servesCuisine":"Kopi","sameAs":"https://www.instagram.com/mampir.kopi_"}
+</script>
+<link rel="stylesheet" href="css/fonts.css?v=20261122e">
+<link rel="stylesheet" href="css/style.css?v=20261122m">
+<link rel="stylesheet" href="css/tambahan.css?v=20261122m">
+<link rel="stylesheet" href="css/dashboard.css?v=20261122n">
+<link rel="stylesheet" href="css/guest.css?v=20261122n">
+<link rel="stylesheet" href="css/fitur.css?v=20261122m">
+<link rel="stylesheet" href="css/animasi.css?v=20261122n">
+<link rel="stylesheet" href="css/awwwards.css?v=20261122t">
+<link rel="stylesheet" href="css/tema-gelap.css?v=20261122c">
+</head>
+<body class="dashboard-page guest-page">
+<a class="skip-link" href="#konten">Lewati ke konten utama</a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="tamu.html" aria-label="Beranda Mampir Kopi">
+      <span class="cup-icon" aria-hidden="true">
+        <img src="img/logo-mampir-kopi.svg" alt="" width="100" height="100">
+      </span>
+      <span class="brand-name">Mampir Kopi</span>
+    </a>
+    <div class="guest-controls">
+      <nav class="guest-nav" aria-label="Navigasi utama">
+      </nav>
+      <div class="guest-auth">
+        <a class="guest-register" href="login.html?mode=daftar">Daftar</a>
+        <a class="guest-login" href="login.html">Masuk</a>
+      </div>
+      <div class="nav-user" hidden>
+        <span class="avatar"></span>
+        <span>Memuat akun...</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main class="container" id="konten">
+  <section class="hero guest-hero" data-intro>
+    <div class="hero-content">
+      <p class="hero-kicker" data-konten="hero_tamu_kicker">Mampir Kopi · Ruang untuk Menikmati</p>
+      <h1 data-konten="hero_tamu_judul">Temukan kopi untuk menemani harimu.</h1>
+      <p data-konten="hero_tamu_sub">Jelajahi pilihan kopi dan minuman kami. Masuk atau daftar untuk mulai memesan.</p>
+      <a href="#guestMenu" class="btn btn-primary">Jelajahi Menu
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+      <div class="hero-meta"><span>Buka hari ini <b>08.00–22.00 WIB</b></span><span>Kebon Jeruk, Jakarta Barat</span><span class="daypart-chip" hidden><span class="daypart-dot" aria-hidden="true"></span><span class="daypart-label"></span></span></div>
+    </div>
+    <figure class="hero-media">
+      <div class="hero-sun" aria-hidden="true"></div>
+      <div class="hero-photo">
+        <img src="uploads/menu/menu-1791018037-169144.jpg" alt="Kopi Susu Mampir, menu andalan Mampir Kopi" width="1000" height="558" fetchpriority="high">
+      </div>
+      <figcaption class="hero-media-cap"><span>Kopi Susu Mampir — andalan kami</span><b>Rp13.000</b></figcaption>
+    </figure>
+  </section>
+
+  <section class="tamu-intro" aria-labelledby="introTitle" data-reveal>
+    <div class="section-head">
+      <div>
+        <p class="guest-section-kicker" data-konten="intro_kicker">Tentang Mampir Kopi</p>
+        <h2 id="introTitle" data-konten="intro_judul">Tempat singgah di Kebon Jeruk</h2>
+      </div>
+    </div>
+    <figure class="tamu-intro-foto"><img src="img/galeri/01-eksterior-streetview.jpg" alt="Kedai Mampir Kopi di malam hari" width="1080" height="1906" loading="lazy"></figure>
+    <div class="tamu-intro-body">
+      <div class="tamu-intro-teks" data-konten-paragraf="intro_teks">
+        <p>Awalnya bukan kedai. Cuma kebiasaan menyeduh kopi untuk tetangga dan teman yang mampir ke teras kecil kami di Sukabumi Selatan. Yang datang makin banyak, sampai akhirnya teras itu jadi kedai.</p>
+        <p>Menunya tetap sederhana: kopi susu andalan, kopi tubruk, manual brew, dan wedang jahe buat hari hujan. Semua diseduh per pesanan, harganya tetap bersahabat.</p>
+        <a class="tamu-intro-link" href="tentang.html">Selengkapnya tentang kami
+          <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+        </a>
+      </div>
+      <dl class="tamu-fakta">
+        <div>
+          <dt>Alamat</dt>
+          <dd>Jl. Ff No. 24, Sukabumi Selatan, Kebon Jeruk, Jakarta Barat 11560</dd>
+        </div>
+        <div>
+          <dt>Jam buka</dt>
+          <dd>Setiap hari, 08.00–22.00 WIB</dd>
+        </div>
+        <div>
+          <dt>Pesan</dt>
+          <dd>Ambil di kasir, diantar, atau COD — lewat website ini</dd>
+        </div>
+      </dl>
+    </div>
+  </section>
+
+  <section class="andalan-strip" id="guestMenu" aria-labelledby="andalanTitle" data-reveal>
+    <div class="section-head">
+      <div>
+        <p class="guest-section-kicker" data-konten="andalan_kicker">Yang paling sering dipesan</p>
+        <h2 id="andalanTitle" data-konten="andalan_judul">Andalan kami</h2>
+      </div>
+      <a class="andalan-cta" href="login.html">Lihat semua menu
+        <svg width="14" height="14" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><path d="M5 12h14M13 6l6 6-6 6"/></svg>
+      </a>
+    </div>
+    <div class="andalan-grid">
+      <figure class="andalan-item">
+        <img src="uploads/menu/menu-1791018037-169144.jpg" alt="Kopi Susu Mampir" width="1000" height="558" loading="lazy">
+        <figcaption><span class="andalan-nama">Kopi Susu Mampir</span><span class="andalan-harga">Rp 13.000</span></figcaption>
+      </figure>
+      <figure class="andalan-item">
+        <img src="uploads/menu/menu-1791018047-113d17.jpg" alt="Kopi Susu Singgah" width="1000" height="558" loading="lazy">
+        <figcaption><span class="andalan-nama">Kopi Susu Singgah</span><span class="andalan-harga">Rp 13.000</span></figcaption>
+      </figure>
+      <figure class="andalan-item">
+        <img src="uploads/menu/menu-1791018056-04262d.jpg" alt="Kopi Susu Butterscotch" width="1000" height="558" loading="lazy">
+        <figcaption><span class="andalan-nama">Kopi Susu Butterscotch</span><span class="andalan-harga">Rp 13.000</span></figcaption>
+      </figure>
+      <figure class="andalan-item">
+        <img src="uploads/menu/menu-1791018171-11387a.jpg" alt="V60, manual brew Mampir Kopi" width="1000" height="558" loading="lazy">
+        <figcaption><span class="andalan-nama">V60</span><span class="andalan-harga">Rp 20.000</span></figcaption>
+      </figure>
+    </div>
+  </section>
+
+  <section class="tamu-galeri" aria-labelledby="galeriTitle" data-reveal>
+    <div class="section-head">
+      <div>
+        <p class="guest-section-kicker" data-konten="galeri_kicker">Yang kami seduh</p>
+        <h2 id="galeriTitle" data-konten="galeri_judul">Galeri</h2>
+      </div>
+      <span class="guest-note" data-konten="galeri_catatan">Klik foto untuk memperbesar</span>
+    </div>
+    <div class="galeri-grid">
+      <button type="button" class="galeri-item galeri-lebar" data-foto="img/galeri/02-minuman-dua-gelas-oranye.png" data-nama="Kopi Susu Mampir" aria-label="Perbesar foto Kopi Susu Mampir">
+        <img src="img/galeri/02-minuman-dua-gelas-oranye.png" alt="Dua gelas Kopi Susu Mampir" width="1440" height="960" loading="lazy">
+        <span class="galeri-nama">Kopi Susu Mampir</span>
+      </button>
+      <button type="button" class="galeri-item" data-foto="img/galeri/03-minuman-butterfly-ungu.jpg" data-nama="Butterfly Lemon" aria-label="Perbesar foto Butterfly Lemon">
+        <img src="img/galeri/03-minuman-butterfly-ungu.jpg" alt="Butterfly Lemon" width="1080" height="1440" loading="lazy">
+        <span class="galeri-nama">Butterfly Lemon</span>
+      </button>
+      <button type="button" class="galeri-item" data-foto="img/galeri/04-eksterior-malam-seberang.jpg" data-nama="Kedai di malam hari" aria-label="Perbesar foto kedai di malam hari">
+        <img src="img/galeri/04-eksterior-malam-seberang.jpg" alt="Kedai di malam hari" width="900" height="1600" loading="lazy">
+        <span class="galeri-nama">Kedai di malam hari</span>
+      </button>
+      <button type="button" class="galeri-item" data-foto="img/galeri/05-minuman-lapis-kuning-ungu.jpg" data-nama="Minuman berlapis" aria-label="Perbesar foto minuman berlapis">
+        <img src="img/galeri/05-minuman-lapis-kuning-ungu.jpg" alt="Minuman berlapis" width="1080" height="1440" loading="lazy">
+        <span class="galeri-nama">Minuman berlapis</span>
+      </button>
+      <button type="button" class="galeri-item" data-foto="img/galeri/06-minuman-biru-gradasi.jpg" data-nama="Minuman biru" aria-label="Perbesar foto minuman biru">
+        <img src="img/galeri/06-minuman-biru-gradasi.jpg" alt="Minuman biru" width="1080" height="1440" loading="lazy">
+        <span class="galeri-nama">Minuman biru</span>
+      </button>
+      <button type="button" class="galeri-item" data-foto="img/galeri/07-suasana-tanaman-malam.jpg" data-nama="Tanaman di teras" aria-label="Perbesar foto tanaman di teras">
+        <img src="img/galeri/07-suasana-tanaman-malam.jpg" alt="Tanaman di teras" width="1080" height="1440" loading="lazy">
+        <span class="galeri-nama">Tanaman di teras</span>
+      </button>
+      <button type="button" class="galeri-item" data-foto="img/galeri/11-minuman-kantong-takeaway.jpg" data-nama="Pesanan dibungkus" aria-label="Perbesar foto pesanan dibungkus">
+        <img src="img/galeri/11-minuman-kantong-takeaway.jpg" alt="Dua gelas kopi susu dibungkus untuk dibawa pulang" width="1080" height="1440" loading="lazy">
+        <span class="galeri-nama">Pesanan dibungkus</span>
+      </button>
+      <button type="button" class="galeri-item" data-foto="img/galeri/09-minuman-kopi-susu-meja.jpg" data-nama="Kopi susu" aria-label="Perbesar foto kopi susu">
+        <img src="img/galeri/09-minuman-kopi-susu-meja.jpg" alt="Kopi susu" width="1080" height="1439" loading="lazy">
+        <span class="galeri-nama">Kopi susu</span>
+      </button>
+      <button type="button" class="galeri-item" data-foto="img/galeri/12-minuman-dua-gelas-kounter.jpg" data-nama="Disiapkan di konter" aria-label="Perbesar foto disiapkan di konter">
+        <img src="img/galeri/12-minuman-dua-gelas-kounter.jpg" alt="Dua gelas kopi di atas meja konter" width="1080" height="1920" loading="lazy">
+        <span class="galeri-nama">Disiapkan di konter</span>
+      </button>
+      <button type="button" class="galeri-item" data-foto="img/galeri/13-minuman-gelas-slogan.jpg" data-nama="Life happens" aria-label="Perbesar foto Life happens">
+        <img src="img/galeri/13-minuman-gelas-slogan.jpg" alt="Gelas kopi susu bertuliskan Life Happens" width="1080" height="1440" loading="lazy">
+        <span class="galeri-nama">Life happens</span>
+      </button>
+      <a class="galeri-peta" href="https://maps.app.goo.gl/3JqPTLDR4BMoUcye9" target="_blank" rel="noopener noreferrer" aria-label="Lihat foto Mampir Kopi lainnya di Google Maps"><b>Foto lainnya di Google Maps</b><span>Lihat galeri lengkap di listing kami ↗</span></a>
+    </div>
+  </section>
+
+  <section class="guest-location" id="lokasi" aria-labelledby="locationTitle" data-reveal>
+    <div class="guest-location-info">
+      <p class="guest-section-kicker">Mampir dan sapa kami</p>
+      <h2 id="locationTitle">Lokasi kami</h2>
+      <p class="guest-address">Jl. Ff No. 24, RT.7/RW.5, Sukabumi Selatan, Kebon Jeruk, Jakarta Barat, DKI Jakarta 11560</p>
+      <a class="guest-directions" href="https://maps.app.goo.gl/3JqPTLDR4BMoUcye9" target="_blank" rel="noopener noreferrer">
+        Buka rute di Google Maps
+        <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+      </a>
+    </div>
+    <div class="guest-map-wrap">
+      <div class="guest-map-fallback">
+        <p>Peta tidak dapat dimuat.</p>
+        <a class="guest-directions" href="https://maps.app.goo.gl/3JqPTLDR4BMoUcye9" target="_blank" rel="noopener noreferrer">
+          Buka rute di Google Maps
+          <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><path d="M7 17 17 7M8 7h9v9"/></svg>
+        </a>
+      </div>
+      <iframe
+        title="Denah lokasi Mampir Kopi, Kebon Jeruk, Jakarta Barat"
+        src="https://maps.google.com/maps?q=MAMPIR%20KOPI%2C%20Jl.%20Ff%20No.24%2C%20Sukabumi%20Selatan%2C%20Kebon%20Jeruk%2C%20Jakarta%20Barat&t=&z=15&ie=UTF8&iwloc=&output=embed"
+        loading="lazy"
+        referrerpolicy="no-referrer-when-downgrade"
+        allowfullscreen>
+      </iframe>
+    </div>
+  </section>
+
+  <footer class="guest-footer" data-reveal>
+    <div class="guest-footer-brand">
+      <span>Mampir Kopi</span>
+      <span>Tempat singgah, rasa istimewa.</span>
+    </div>
+    <nav class="guest-footer-links" aria-label="Jelajahi Mampir Kopi">
+      <a href="tentang.html">Tentang Kami</a>
+      <a href="promo.html">Promo</a>
+      <a href="blog.html">Blog</a>
+      <a href="testimoni.html">Testimoni</a>
+      <a href="faq.html">FAQ</a>
+      <a href="kontak.html">Kontak Kami</a>
+      <a href="syarat.html">Syarat &amp; Ketentuan</a>
+      <a href="privasi.html">Kebijakan Privasi</a>
+    </nav>
+    <a class="guest-instagram" href="https://www.instagram.com/mampir.kopi_?stkn=MXc2MWdxNWwzeWZnaQ%3D%3D" target="_blank" rel="noopener noreferrer" aria-label="Instagram Mampir Kopi (buka tab baru)">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="instagram-dot" cx="17.5" cy="6.5" r="1"/></svg>
+      <span>@mampir.kopi_</span>
+    </a>
+    <div class="guest-footer-meta">
+      <span>Jl. Ff No. 24, Sukabumi Selatan, Kebon Jeruk, Jakarta Barat 11560</span>
+      <span>Buka setiap hari 08.00–22.00 WIB</span>
+      <span>© 2026 Mampir Kopi</span>
+    </div>
+  </footer>
+</main>
+<div class="lightbox" id="lightbox" role="dialog" aria-modal="true" aria-label="Foto diperbesar">
+  <button type="button" class="lightbox-tutup" aria-label="Tutup galeri">×</button>
+  <button type="button" class="lightbox-nav prev" aria-label="Foto sebelumnya">‹</button>
+  <figure class="lightbox-isi">
+    <img id="lightboxImg" src="" alt="">
+    <figcaption id="lightboxCap"></figcaption>
+  </figure>
+  <button type="button" class="lightbox-nav next" aria-label="Foto berikutnya">›</button>
+</div>
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/SplitText.min.js"></script>
+<script src="js/motion.js?v=20261122u"></script>
+<script src="js/guest.js?v=20261122n"></script>
+<script src="js/konten.js?v=20261122m"></script>
+<script>
+/* D-m3: bila Google Maps tidak terjangkau, sembunyikan iframe yang gagal
+   (Chrome menampilkan halaman error opaque yang menutupi fallback) agar
+   pesan fallback terlihat. Fail-open: probe berhasil atau menggantung
+   (timeout 8 detik) = iframe dibiarkan tampil normal. */
+(function () {
+  var wrap = document.querySelector('.guest-map-wrap');
+  if (!wrap) return;
+  var iframe = wrap.querySelector('iframe');
+  var fallback = wrap.querySelector('.guest-map-fallback');
+  if (!iframe || !fallback || typeof fetch !== 'function') return;
+  var settled = false;
+  var timer = setTimeout(function () { settled = true; }, 8000);
+  fetch('https://maps.google.com', { mode: 'no-cors' })
+    .then(function () { settled = true; clearTimeout(timer); })
+    .catch(function () {
+      clearTimeout(timer);
+      if (settled) return;
+      settled = true;
+      iframe.style.display = 'none';
+    });
+})();
+</script>
+  <nav class="tabbar" aria-label="Navigasi utama">
+    <a href="tamu.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg><span>Beranda</span></a>
+    <a href="tamu.html#guestMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Z"/><path d="M17 10h1a3 3 0 0 1 0 6h-1"/><path d="M8 5c-1-1 1-2 0-3M12 5c-1-1 1-2 0-3"/></svg><span>Menu</span></a>
+    <a href="tentang.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg><span>Tentang</span></a>
+    <a href="login.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Masuk</span></a>
+  </nav>
+</body>
+</html>

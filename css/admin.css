@@ -1,0 +1,277 @@
+/* MAMPIR KOPI ADMIN PANEL — tema selaras dengan website pelanggan (hijau hutan, cokelat kopi, krem) */
+.admin-page{
+  --forest:#191815;--forest-deep:#292722;--forest-soft:#34322e;
+  --coffee:#4d453b;--coffee-deep:#3a352d;--tan:#8d887c;
+  --cream:#f7f6f2;--sand:#f0eee8;--paper:#ffffff;--line:#e6e2da;--muted:#7d786c;
+  --serif:inherit;
+  background:var(--cream);color:#1a1a1a;font-size:13px;
+}
+.admin-page button:focus-visible,.admin-page a:focus-visible,.admin-page input:focus-visible,.admin-page select:focus-visible{outline:2px solid var(--coffee);outline-offset:2px}
+.admin-shell{min-height:100vh;display:flex}
+
+/* Sidebar */
+.admin-sidebar{width:252px;background:var(--forest);color:var(--paper);position:fixed;left:0;top:0;bottom:0;padding:24px 14px;display:flex;flex-direction:column;z-index:5}
+.admin-brand{display:flex;gap:11px;align-items:center;padding:0 10px 24px;border-bottom:1px solid #34322e}
+.admin-brand .cup-icon{width:38px;height:38px;border-radius:9px;background:var(--paper);display:flex;align-items:center;justify-content:center}
+.admin-brand svg{width:20px;height:20px;stroke:var(--forest)}
+.admin-brand b{display:block;font-weight:700;font-size:18px;letter-spacing:-.01em}
+.admin-brand small{color:#aaa69d;font-size:11px;letter-spacing:.15em}
+.admin-nav{flex:1;min-height:0;padding-top:10px;overflow-y:auto;overflow-x:hidden;scrollbar-width:thin;scrollbar-color:#625f58 transparent}
+.admin-nav::-webkit-scrollbar{width:6px}
+.admin-nav::-webkit-scrollbar-track{background:transparent}
+.admin-nav::-webkit-scrollbar-thumb{border-radius:6px;background:#625f58}
+.admin-nav::-webkit-scrollbar-thumb:hover{background:#817d73}
+.nav-label{font-size:11px;letter-spacing:.14em;color:#817d73;margin:20px 12px 8px}
+.admin-nav-item{width:100%;border:0;background:transparent;color:#aaa69d;text-align:left;padding:10px 12px;border-radius:8px;display:flex;align-items:center;gap:12px;font-size:13px;margin-bottom:2px;transition:background .18s ease,color .18s ease}
+.admin-nav-item svg{width:17px;height:17px;flex:none;stroke:currentColor;fill:none;stroke-width:1.7;stroke-linecap:round;stroke-linejoin:round}
+.admin-nav-item:hover{background:#292722;color:#fff}
+.admin-nav-item.active{background:var(--paper);color:var(--forest);font-weight:600}
+.admin-nav-item.active svg{stroke:var(--coffee)}
+/* D-M4: tombol hamburger — hanya tampil di HP (lihat media query di bawah). */
+.admin-nav-toggle{display:none}
+.sidebar-bottom{margin-top:auto;border-top:1px solid #34322e;padding-top:12px}
+.sidebar-bottom a,.sidebar-bottom button{display:block;width:100%;border:0;background:none;color:#aaa69d;text-align:left;padding:9px 12px;font-size:12.5px;transition:color .18s ease}
+.sidebar-bottom a:hover,.sidebar-bottom button:hover{color:#fff}
+
+/* Topbar */
+.admin-main{margin-left:252px;width:calc(100% - 252px);min-height:100vh}
+.admin-topbar{height:84px;background:rgba(255,255,255,.96);border-bottom:1px solid var(--line);padding:0 36px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:4;backdrop-filter:blur(6px)}
+.admin-topbar h1{font-weight:700;font-size:24px;letter-spacing:-.02em;margin:2px 0 0;color:var(--forest)}
+.eyebrow{font-size:12px;color:var(--tan);margin:0}
+.admin-profile{display:flex;gap:11px;align-items:center}
+.admin-profile .avatar{width:38px;height:38px;background:var(--forest);color:var(--paper);border:0;font-size:16px}
+.admin-profile b{font-size:13px}.admin-profile small{display:block;color:var(--muted);font-size:11px}
+.admin-section{display:none;padding:30px 36px 44px}.admin-section.active{display:block}
+
+/* Hero */
+.welcome-card{position:relative;overflow:hidden;border-radius:14px;padding:38px 40px;min-height:176px;display:flex;justify-content:space-between;align-items:center;margin-bottom:20px;color:var(--paper);
+  background:linear-gradient(96deg,rgba(29,27,23,.96) 28%,rgba(29,27,23,.62) 100%),url(../img/cafe-login.jpg) center/cover}
+.welcome-card h2{margin:10px 0 8px;font-weight:700;font-size:28px;letter-spacing:-.02em}
+.welcome-card p{margin:0;color:#bbb5aa;font-size:14px;max-width:440px;line-height:1.6}
+.mini-tag{display:inline-block;font-size:11px;background:#37342e;border:1px solid #4a463f;padding:5px 11px;border-radius:20px;color:#d7d0c4}
+.coffee-mark{width:104px;height:104px;opacity:.9;flex:none}
+.coffee-mark img{width:100%;height:100%;display:block}
+
+/* Statistik */
+.admin-stats{display:grid;grid-template-columns:repeat(4,1fr);gap:14px;margin-bottom:20px}
+.admin-stat{position:relative;background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px 20px 18px;display:block}
+.admin-stat .stat-icon{position:absolute;right:16px;top:16px;width:36px;height:36px;border-radius:9px;background:var(--sand);color:var(--coffee);display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:700}
+.admin-stat .stat-icon svg{width:16px;height:16px;stroke:currentColor;fill:none;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round}
+.admin-stat small{display:block;color:var(--muted);font-size:12px}
+.admin-stat strong{display:block;font-weight:700;font-size:26px;letter-spacing:-.02em;margin:8px 0 6px;color:var(--forest)}
+.admin-stat em{font-style:normal;color:var(--tan);font-size:11.5px}
+.admin-stat:nth-child(2){background:var(--paper);;border-color:var(--line)}
+.admin-stat:nth-child(2) small,.admin-stat:nth-child(2) em{color:var(--muted)}
+.admin-stat:nth-child(2) strong{color:var(--forest)}
+.admin-stat em.up{color:#a9d9ae!important}.admin-stat em.down{color:#f0b9ab!important}
+.admin-stat:nth-child(2) .stat-icon{background:#34322e;color:var(--paper)}
+
+/* Kartu & daftar */
+.admin-grid-2{display:grid;grid-template-columns:1.15fr .85fr;gap:18px}
+.admin-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:24px}
+.card-head{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:12px}
+.card-head h3{margin:0;font-weight:700;font-size:20px;letter-spacing:-.01em}
+.card-head p{margin:4px 0 0;color:var(--muted);font-size:12px}
+.text-btn{border:0;background:none;font-size:12.5px;font-weight:600;color:var(--coffee);padding:2px 0;border-bottom:1px solid transparent}
+.text-btn:hover{color:var(--forest);border-bottom-color:currentColor}
+.period-pill{font-size:11.5px;border:1px solid var(--line);background:var(--cream);padding:5px 11px;border-radius:20px;color:var(--tan)}
+.mini-order{display:grid;grid-template-columns:62px minmax(0,1fr) auto auto 64px;gap:12px;align-items:center;padding:13px 0;border-top:1px solid var(--line)}
+.mini-order:first-child{border-top:0}
+.order-id{font-weight:700;font-size:12.5px;color:var(--coffee)}
+.mini-main{min-width:0}
+/* D-M5: kode + total sebagai baris kedua di HP (desktop memakai kolom sendiri). */
+.mini-kode{display:none}
+.mini-order p{margin:0;font-size:13.5px;font-weight:600}
+.mini-order small{display:block;margin-top:2px;color:var(--muted);font-size:12px}
+.mini-main small{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.mini-meta{text-align:right}.mini-meta b{font-size:13px;color:var(--coffee-deep)}
+.quick-btn{border:1px solid #ddd8cf;background:var(--paper);border-radius:8px;padding:6px 0;font-size:12px;font-weight:600;color:var(--coffee-deep);transition:background .18s ease,color .18s ease}
+.quick-btn:hover{background:var(--forest);border-color:var(--forest);color:var(--paper)}
+.stat-action .action-line{display:flex;align-items:baseline;gap:9px;border:0;background:none;padding:0;margin-top:6px;text-align:left;width:100%;color:inherit}
+.stat-action .action-line:first-of-type{margin-top:10px}
+.stat-action .action-line b{font-weight:700;font-size:22px;line-height:1.2;color:#a9701c;min-width:22px}
+.stat-action .action-line b.zero{color:#b9b3a5}
+.stat-action .action-line span{font-size:12.5px;color:var(--muted)}
+.stat-action .action-line:hover span{color:var(--forest);text-decoration:underline}
+.period-toggle{display:flex;border:1px solid var(--line);border-radius:8px;overflow:hidden;background:var(--cream)}
+.period-toggle button{border:0;background:none;padding:10px 14px;min-height:44px;font-size:11.5px;color:var(--tan);transition:background .18s ease,color .18s ease}
+.period-toggle button.active{background:var(--forest);color:var(--paper)}
+
+/* Grafik */
+.bar-chart{height:210px;display:flex;align-items:flex-end;justify-content:space-around;gap:8px;padding:12px 6px 0;border-bottom:1px solid var(--line);
+  background:repeating-linear-gradient(to top,transparent 0,transparent 51px,var(--line-soft,#eeeae2) 51px,var(--line-soft,#eeeae2) 52px)}
+.bar-col{height:100%;display:flex;flex-direction:column;justify-content:flex-end;align-items:center;gap:8px;width:12%}
+.bar-col span{width:100%;max-width:30px;background:#cfc8ba;border-radius:8px 5px 0 0;min-height:6px;transition:background .18s ease}
+.bar-col:hover span{background:#8f877a}
+.bar-col.today span{background:#4d453b}
+.bar-col.today small{color:var(--forest);font-weight:700}
+.bar-col.today small::after{content:"";display:block;width:5px;height:5px;border-radius:50%;background:#4d453b;margin:3px auto 0}
+/* D-m6: label sumbu Y (nilai maksimum) + pesan empty state grafik. */
+.bar-chart{position:relative}
+.chart-ymax{position:absolute;left:6px;top:2px;font-size:11px;font-weight:600;color:var(--muted)}
+.bar-chart .chart-empty{align-self:center;margin:auto;font-size:13px;color:var(--muted);text-align:center}
+.bar-chart.month{gap:3px;justify-content:space-between}
+.bar-chart.month .bar-col{width:auto;flex:1;min-width:0}
+.bar-chart.month .bar-col span{max-width:none;width:72%}
+.bar-col small{white-space:nowrap}
+.bar-col small{font-size:11.5px;color:var(--muted);margin-bottom:-22px}
+.chart-total{display:flex;justify-content:space-between;align-items:baseline;padding-top:32px;font-size:12px;color:var(--muted)}
+.chart-total b{color:var(--forest);font-weight:700;font-size:21px}
+
+/* Toolbar, filter, tabel */
+.section-toolbar{display:flex;justify-content:space-between;align-items:flex-end;margin-bottom:22px}
+.section-toolbar h2{margin:0;font-weight:700;font-size:26px;letter-spacing:-.02em}
+.section-toolbar p{margin:5px 0 0;color:var(--muted);font-size:13px}
+.admin-page .btn{border-radius:8px;padding:10px 18px;font-size:13px}
+.admin-page .btn-primary{background:var(--forest);color:var(--paper)}
+.admin-page .btn-primary:hover{background:var(--forest-deep);opacity:1}
+.admin-page .btn-ghost{background:transparent;border:1px solid #ddd8cf;color:var(--coffee-deep)}
+.admin-page .btn-ghost:hover{background:var(--sand)}
+.filter-row{display:flex;gap:10px;margin-bottom:16px;flex-wrap:wrap}
+.filter-row label{font-size:11.5px;color:var(--muted);display:flex;flex-direction:column;gap:5px}
+.admin-search,.admin-select,.filter-row select{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:10px 12px;font-size:13px;color:var(--forest);outline:none;transition:border-color .18s ease,box-shadow .18s ease}
+.admin-search:focus,.filter-row select:focus,.admin-select:focus{border-color:var(--coffee);box-shadow:0 0 0 3px rgba(77,69,59,.14)}
+.admin-search{width:300px}
+.admin-table-wrap{background:var(--paper);border:1px solid var(--line);border-radius:12px;overflow:auto}
+.admin-table{width:100%;border-collapse:collapse;min-width:760px}
+.admin-table th{background:#faf9f6;color:var(--tan);font-size:11px;letter-spacing:.08em;text-transform:uppercase;text-align:left;padding:13px 16px;font-weight:700}
+.admin-table td{padding:14px 16px;border-bottom:1px solid var(--line);font-size:13px;vertical-align:middle}
+.admin-table tbody tr:hover{background:#faf9f6}
+.admin-table tr:last-child td{border-bottom:0}
+.menu-name{display:flex;gap:12px;align-items:center}
+.menu-thumb{width:42px;height:42px;border-radius:8px;background:var(--sand);display:flex;align-items:center;justify-content:center;overflow:hidden;flex:none}
+.menu-thumb img{width:100%;height:100%;object-fit:cover}
+.price-cell{font-weight:700;color:var(--coffee-deep)}
+.action-group{display:flex;gap:6px}
+.table-btn{border:1px solid #ddd8cf;background:var(--paper);border-radius:8px;padding:6px 11px;font-size:12px;color:var(--coffee-deep);transition:background .18s ease}
+.table-btn:hover{background:var(--sand)}
+.table-btn.delete{color:#984d46;border-color:#e8d2cd}.table-btn.delete:hover{background:#f6e2df}
+
+/* Status */
+.status{display:inline-flex;align-items:center;padding:4px 10px;border-radius:20px;font-size:11.5px;font-weight:600;white-space:nowrap}
+.status.active,.status.selesai,.status.verified{background:#e7f3e5;color:#477548}
+.status.pending,.status.menunggu{background:#fbefd9;color:#95691f}
+.status.proses{background:#e8eef7;color:#536c8e}
+.status.off{background:#eee;color:#777}
+.status.cancel{background:#f6e2df;color:#984d46}
+.status-tabs{display:flex;gap:6px;margin-bottom:16px;flex-wrap:wrap}
+.status-tabs button{border:1px solid var(--line);background:var(--paper);border-radius:8px;padding:8px 15px;font-size:12.5px;color:var(--muted);transition:background .18s ease,color .18s ease}
+.status-tabs button:hover{color:var(--forest)}
+.status-tabs button.active{background:var(--forest);color:var(--paper);border-color:var(--forest)}
+
+/* Kategori, promo, laporan */
+.category-grid,.promo-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:16px}
+.category-card,.promo-card{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:22px}
+.promo-card{border-left:3px solid var(--coffee)}
+.promo-status-toggle{border:0;cursor:pointer;font:inherit;transition:filter .18s ease,transform .18s ease}
+.promo-status-toggle:hover{filter:brightness(.96);transform:translateY(-1px)}
+.promo-card .promo-status-toggle.status.off{background:#f6e2df;color:#984d46}
+.category-icon{width:52px;height:52px;border-radius:50%;background:var(--sand);display:flex;align-items:center;justify-content:center;color:var(--forest);margin-bottom:14px}
+.category-icon svg{width:25px;height:25px;stroke:currentColor;flex:none}
+.category-icon img{width:100%;height:100%;object-fit:cover;border-radius:50%}
+.category-card h3,.promo-card h3{margin:0 0 4px;font-size:15px}
+.category-card p,.promo-card p{margin:0;color:var(--muted);font-size:12px}
+.category-card .card-actions,.promo-card .card-actions{margin-top:20px;display:flex;justify-content:space-between;align-items:center}
+.promo-code{font-size:24px;letter-spacing:.04em;color:var(--coffee-deep);margin-bottom:6px}
+.promo-value{font-size:13px;font-weight:700;margin-top:12px;color:var(--forest)}
+.report-cards{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;margin-bottom:18px}
+.report-cards>div{background:var(--paper);border:1px solid var(--line);border-radius:12px;padding:20px}
+.report-cards small{display:block;color:var(--muted);font-size:12px}
+.report-cards b{display:block;font-weight:700;font-size:24px;letter-spacing:-.02em;margin-top:8px}
+.report-total{display:flex;justify-content:space-between;align-items:baseline;padding:18px 20px;border-top:1px solid var(--line);background:var(--sand);font-size:12.5px;color:var(--tan)}
+.report-total b{font-weight:700;font-size:22px;color:var(--forest)}
+.no-border{border:0;border-radius:0}.report-card{padding:0;overflow:hidden}
+.report-card h3{padding:20px 22px;margin:0;border-bottom:1px solid var(--line);font-weight:700;font-size:20px}
+
+/* Modal */
+.modal{display:none;position:fixed;inset:0;background:rgba(29,27,23,.55);align-items:center;justify-content:center;z-index:20;padding:20px}
+.modal.show{display:flex}
+.modal-box{background:var(--paper);width:460px;max-width:100%;max-height:92vh;overflow:auto;border-radius:14px;padding:28px;position:relative;box-shadow:0 24px 60px rgba(29,27,23,.3)}
+.modal-close{position:absolute;right:16px;top:12px;border:0;background:none;font-size:26px;color:var(--tan)}
+.modal-box h3{margin:0 0 20px;font-weight:700;font-size:22px}
+.form-group{margin-bottom:14px}
+.form-group label{display:block;font-size:11px;font-weight:700;letter-spacing:.06em;margin-bottom:6px;color:var(--tan)}
+.form-group input,.form-group select,.form-group textarea{width:100%;border:1px solid var(--line);background:#fff;border-radius:8px;padding:10px 12px;font-size:13px;color:var(--forest)}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--coffee);box-shadow:0 0 0 3px rgba(77,69,59,.14)}
+.modal-actions{display:flex;justify-content:flex-end;gap:8px;margin-top:20px}
+.admin-toast{background:var(--forest)!important;border-radius:8px!important;font-size:13px!important}.admin-toast.err{background:#8d3d35!important}
+
+.admin-grid-2+.admin-grid-2{margin-top:18px}
+.top-item{display:grid;grid-template-columns:22px minmax(0,1fr) auto;gap:12px;align-items:center;padding:12px 0;border-top:1px solid var(--line)}
+.top-item:first-child{border-top:0}
+.top-rank{font-weight:700;font-size:13px;color:var(--tan)}
+.top-item:first-child .top-rank{color:var(--forest)}
+.top-main p{margin:0 0 7px;font-size:13.5px;font-weight:600}
+.top-track{height:6px;background:#eeeae2;border-radius:20px;overflow:hidden}
+.top-track i{display:block;height:100%;background:var(--coffee);border-radius:20px}
+.top-item b{font-size:12.5px;color:var(--coffee-deep);white-space:nowrap}
+.stock-item{display:flex;justify-content:space-between;align-items:center;padding:13px 0;border-top:1px solid var(--line)}
+.stock-item:first-child{border-top:0}
+.stock-item p{margin:0;font-size:13.5px;font-weight:600}
+.empty-note{margin:0;padding:14px 0;font-size:12.5px;color:var(--muted)}
+/* Responsif */
+@media(max-width:1000px){.admin-sidebar{width:218px}.admin-main{margin-left:218px;width:calc(100% - 218px)}.admin-stats{grid-template-columns:repeat(2,1fr)}.admin-grid-2{grid-template-columns:1fr}.category-grid,.promo-grid{grid-template-columns:repeat(2,1fr)}.coffee-mark{display:none}}
+@media(max-width:700px){.admin-sidebar{position:relative;width:100%;height:auto}.admin-nav-toggle{display:inline-flex;align-items:center;justify-content:center;width:44px;height:44px;margin-left:auto;border:1px solid #34322e;border-radius:8px;background:transparent;color:#fff;flex:none}.admin-nav-toggle svg{width:22px;height:22px;stroke:currentColor;fill:none}.admin-shell{display:block}.admin-main{margin-left:0;width:100%}.admin-nav{display:none}.admin-sidebar.nav-open .admin-nav{display:grid;grid-template-columns:repeat(2,1fr);flex:initial;min-height:auto;overflow:visible}.nav-label{grid-column:1/-1}.sidebar-bottom{display:none}.admin-sidebar.nav-open .sidebar-bottom{display:block}.admin-topbar{padding:0 18px}.admin-section{padding:20px 18px 36px}.admin-stats,.report-cards,.category-grid,.promo-grid{grid-template-columns:1fr}.section-toolbar{align-items:flex-start;gap:12px;flex-direction:column}.admin-search{width:100%}.welcome-card{padding:28px 24px}.mini-order{grid-template-columns:1fr auto}.mini-order .order-id,.mini-order .mini-meta{display:none}.mini-order .mini-kode{display:block}.welcome-card h2{font-size:26px}}
+@media(prefers-reduced-motion:reduce){.admin-page *{transition:none!important}}
+
+:root{ --font:'Source Sans 3','Segoe UI',system-ui,-apple-system,sans-serif; }
+
+/* Sentuhan editorial (anti-slop): judul & angka serif, chip ikon diratakan. */
+#pageTitle, .welcome-card h2, .card-head h3, .admin-card h3, .admin-stat strong{ font-family:'Fraunces',Georgia,serif; }
+.admin-stat .stat-icon{ background:transparent; border:1px solid var(--line); }
+
+/* Konten Website / CMS (22 Nov 2026): kartu sub-seksi + grid galeri. */
+.konten-card{ margin-bottom:18px; }
+.konten-card h3{ margin:0 0 14px; font-size:16px; }
+.konten-card .section-toolbar{ margin-bottom:12px; }
+.konten-card .section-toolbar h3{ margin:0; }
+.konten-galeri-grid{ display:grid; grid-template-columns:repeat(3,1fr); gap:14px; }
+.konten-galeri-item{ border:1px solid var(--line); border-radius:12px; overflow:hidden; background:var(--paper); }
+.konten-galeri-item img{ width:100%; height:130px; object-fit:cover; display:block; }
+.konten-galeri-info{ padding:12px 14px; display:flex; flex-direction:column; gap:4px; align-items:flex-start; }
+.konten-galeri-info small{ color:var(--muted); font-size:12px; }
+.konten-galeri-item .action-group{ padding:0 14px 14px; }
+@media(max-width:700px){ .konten-galeri-grid{ grid-template-columns:1fr 1fr; } }
+
+/* ---------- Profil admin (22 Nov, Amar: "admin juga bisa edit profile
+   dan password seperti user") — menu akun di topbar + formulir Profil Saya,
+   cermin menu akun + formulir Edit Profil pelanggan (profil.html). ---------- */
+.admin-profile{ position:relative; cursor:pointer; }
+.admin-profile .chev{ width:10px; height:10px; opacity:.5; }
+.admin-profile .avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+.admin-profile .user-menu{
+  position:absolute; top:calc(100% + 8px); right:0;
+  background:var(--paper); border:1px solid var(--line); border-radius:12px;
+  box-shadow:0 16px 32px rgba(0,0,0,.14); padding:6px; min-width:180px; z-index:80;
+}
+.admin-profile .user-menu[hidden]{ display:none; }
+.admin-profile .user-menu a, .admin-profile .user-menu button{
+  display:flex; width:100%; padding:10px 12px; border:0; background:none;
+  color:#1a1a1a; font-size:13px; text-align:left; cursor:pointer;
+  border-radius:8px; text-decoration:none; box-sizing:border-box;
+}
+.admin-profile .user-menu a:hover, .admin-profile .user-menu button:hover{ background:var(--sand); }
+.profil-card{ background:#FFFFFF; border:1px solid #E2D5C3; border-radius:18px; padding:20px; margin-bottom:44px; box-shadow:0 16px 32px -24px rgba(41,53,45,.28); max-width:640px; }
+.profil-head{ display:flex; align-items:center; gap:16px; }
+.profil-ava{ position:relative; display:block; width:84px; height:84px; flex:0 0 84px; cursor:pointer; }
+.profil-avatar{ width:84px; height:84px; border-radius:50%; background:#F1E9DD; color:#2C1E16; display:flex; align-items:center; justify-content:center; font-size:32px; font-weight:700; overflow:hidden; }
+.profil-avatar img{ width:100%; height:100%; object-fit:cover; display:block; }
+.profil-nama{ font-size:17px; font-weight:800; color:#2C1E16; margin:0 0 2px; line-height:1.25; }
+.profil-sub{ font-size:12.5px; color:#6B584C; margin:0 0 10px; }
+.profil-note{ font-size:12.5px; color:#6B584C; line-height:1.55; margin:14px 0 0; }
+.profil-hint{ font-size:13px; color:#6B584C; margin-top:6px; }
+.profil-div{ height:1px; background:#E2D5C3; margin:16px 0 4px; }
+.profil-form{ display:flex; flex-direction:column; gap:6px; }
+.profil-label{ font-size:13px; font-weight:700; color:#2C1E16; margin-top:10px; }
+.profil-input{ padding:11px 13px; border:1.5px solid #E2D5C3; border-radius:11px; font:inherit; font-size:14px; background:#fff; color:#2C1E16; }
+.profil-input:focus{ outline:none; border-color:#9A4A20; }
+.profil-input[readonly]{ background:#F1E9DD; color:#6B584C; }
+.pw-wrap{ position:relative; display:flex; }
+.pw-wrap .profil-input{ flex:1; padding-right:52px; }
+.pw-eye{ position:absolute; right:4px; top:50%; transform:translateY(-50%); width:44px; height:44px; border:0; background:transparent; color:#6B584C; display:flex; align-items:center; justify-content:center; cursor:pointer; border-radius:8px; margin:0; }
+.pw-eye svg{ width:20px; height:20px; }
+.pw-eye .ic-eyeoff{ display:none; }
+.pw-eye.on .ic-eye{ display:none; }
+.pw-eye.on .ic-eyeoff{ display:block; }
+.pw-eye:hover, .pw-eye:active{ background:transparent; }
+.profil-save{ width:100%; height:48px; border-radius:12px; font-size:15px; margin-top:18px; }

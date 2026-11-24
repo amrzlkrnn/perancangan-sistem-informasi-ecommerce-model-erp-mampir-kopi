@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<script>/* Tema gelap tanpa kilatan (22 Nov 16:34): baca cache localStorage SEBELUM cat pertama. */try{if(localStorage.getItem('mk_tema')==='gelap')document.documentElement.setAttribute('data-tema','gelap');}catch(e){}</script>
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Testimoni Pelanggan — Mampir Kopi</title>
+  <link rel="canonical" href="http://localhost:8080/testimoni.html">
+  <meta property="og:type" content="website">
+  <meta property="og:title" content="Testimoni Pelanggan — Mampir Kopi">
+  <meta property="og:description" content="Testimoni pelanggan Mampir Kopi.">
+  <meta property="og:url" content="http://localhost:8080/testimoni.html">
+  <meta property="og:image" content="img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Testimoni Pelanggan — Mampir Kopi">
+  <meta name="twitter:description" content="Testimoni pelanggan Mampir Kopi.">
+  <meta name="twitter:image" content="img/og.jpg">
+<meta name="description" content="Mampir Kopi — kedai kopi di Kebon Jeruk, Jakarta Barat. Testimoni Pelanggan.">
+<link rel="icon" type="image/svg+xml" href="img/logo-mampir-kopi.svg">
+<link rel="stylesheet" href="css/fonts.css?v=20261122e">
+<link rel="stylesheet" href="css/style.css?v=20261122m">
+<link rel="stylesheet" href="css/tambahan.css?v=20261122m">
+<link rel="stylesheet" href="css/dashboard.css?v=20261122n">
+<link rel="stylesheet" href="css/guest.css?v=20261122n">
+<link rel="stylesheet" href="css/fitur.css?v=20261122m">
+<link rel="stylesheet" href="css/animasi.css?v=20261122n">
+<link rel="stylesheet" href="css/awwwards.css?v=20261122t">
+<link rel="stylesheet" href="css/tema-gelap.css?v=20261122c">
+</head>
+<body class="dashboard-page guest-page">
+<a class="skip-link" href="#konten">Lewati ke konten utama</a>
+<header class="topbar">
+  <div class="topbar-inner">
+    <a class="brand" href="tamu.html" aria-label="Beranda Mampir Kopi">
+      <span class="cup-icon" aria-hidden="true"><img src="img/logo-mampir-kopi.svg" alt="" width="100" height="100"></span>
+      <span class="brand-name">Mampir Kopi</span>
+    </a>
+    <div class="guest-controls">
+      <div class="guest-auth">
+        <a class="guest-register" href="login.html?mode=daftar">Daftar</a>
+        <a class="guest-login" href="login.html">Masuk</a>
+      </div>
+      <div class="nav-user" hidden>
+        <span class="avatar"></span>
+        <span>Memuat akun...</span>
+        <svg class="chev" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="m6 9 6 6 6-6"/></svg>
+      </div>
+    </div>
+  </div>
+</header>
+<main class="container" id="konten">
+  <section class="page-hero">
+    <p class="guest-section-kicker">Testimoni</p>
+    <h1>Kata mereka tentang Mampir Kopi.</h1>
+    <p class="lead">Cerita jujur dari pelanggan yang sudah mampir dan memesan.</p>
+  </section>
+  <div class="testi-grid" id="testiGrid"><p class="f-note">Memuat testimoni...</p></div>
+  <div class="info-card" style="max-width:640px">
+    <h2>Tulis testimonimu</h2>
+    <form id="formTesti" novalidate>
+      <div class="f-field"><span class="f-label" id="labelRating">Penilaian</span>
+        <div class="star-pick" role="radiogroup" aria-labelledby="labelRating">
+          <button type="button" data-nilai="1" aria-label="1 bintang">★</button><button type="button" data-nilai="2" aria-label="2 bintang">★</button><button type="button" data-nilai="3" aria-label="3 bintang">★</button><button type="button" data-nilai="4" aria-label="4 bintang">★</button><button type="button" data-nilai="5" aria-label="5 bintang">★</button>
+        </div>
+        <input type="hidden" id="tRating" value="5"></div>
+      <div class="f-field"><label for="tIsi">Testimoni</label><textarea id="tIsi" placeholder="Ceritakan pengalamanmu di Mampir Kopi"></textarea></div>
+      <button class="btn btn-primary" type="submit">Kirim Testimoni</button>
+      <p class="f-note" id="testiPesan" hidden></p>
+      <p class="f-note">Testimonimu langsung tampil setelah dikirim. Kamu perlu masuk dulu untuk menulis.</p>
+    </form>
+  </div>
+
+  <footer class="guest-footer" data-reveal>
+    <div class="guest-footer-brand">
+      <span>Mampir Kopi</span>
+      <span>Tempat singgah, rasa istimewa.</span>
+    </div>
+    <nav class="guest-footer-links" aria-label="Jelajahi Mampir Kopi">
+      <a href="tentang.html">Tentang Kami</a>
+      <a href="promo.html">Promo</a>
+      <a href="blog.html">Blog</a>
+      <a href="testimoni.html">Testimoni</a>
+      <a href="faq.html">FAQ</a>
+      <a href="kontak.html">Kontak Kami</a>
+      <a href="syarat.html">Syarat &amp; Ketentuan</a>
+      <a href="privasi.html">Kebijakan Privasi</a>
+    </nav>
+    <a class="guest-instagram" href="https://www.instagram.com/mampir.kopi_" target="_blank" rel="noopener noreferrer" aria-label="Instagram Mampir Kopi (buka tab baru)">
+      <svg viewBox="0 0 24 24" fill="none" aria-hidden="true"><rect x="3" y="3" width="18" height="18" rx="5"/><circle cx="12" cy="12" r="4"/><circle class="instagram-dot" cx="17.5" cy="6.5" r="1"/></svg>
+      <span>@mampir.kopi_</span>
+    </a>
+    <div class="guest-footer-meta">
+      <span>Jl. Ff No. 24, Sukabumi Selatan, Kebon Jeruk, Jakarta Barat 11560</span>
+      <span>Buka setiap hari 08.00–22.00 WIB</span>
+      <span>© 2026 Mampir Kopi</span>
+    </div>
+  </footer>
+</main>
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/SplitText.min.js"></script>
+<script src="js/motion.js?v=20261122u"></script>
+<script src="js/fitur.js?v=20261122n"></script>
+  <nav class="tabbar" aria-label="Navigasi utama">
+    <a href="tamu.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 10.5 12 3l9 7.5"/><path d="M5 9.5V21h14V9.5"/><path d="M9 21v-6h6v6"/></svg><span>Beranda</span></a>
+    <a href="tamu.html#guestMenu"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 9h13v6a4 4 0 0 1-4 4H8a4 4 0 0 1-4-4V9Z"/><path d="M17 10h1a3 3 0 0 1 0 6h-1"/><path d="M8 5c-1-1 1-2 0-3M12 5c-1-1 1-2 0-3"/></svg><span>Menu</span></a>
+    <a href="tentang.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="12" r="9"/><path d="M12 11v5"/><path d="M12 8h.01"/></svg><span>Tentang</span></a>
+    <a href="login.html"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><circle cx="12" cy="8" r="4"/><path d="M4 21a8 8 0 0 1 16 0"/></svg><span>Masuk</span></a>
+  </nav>
+</body>
+</html>

@@ -1,0 +1,204 @@
+.guest-page .topbar-inner{justify-content:space-between}
+.guest-controls{display:flex;align-items:center;gap:18px;margin-left:auto}
+/* Nav pengguna di lacak (22 Nov 16:51): isi ruang di antara logo dan
+   kontrol akun lalu pusatkan tautannya — menyamai nav halaman user
+   (di sana space-between memusatkan nav; di sini margin-left:auto
+   .guest-controls menyedot ruang bebas sehingga nav menempel logo). */
+.guest-page .nav-links{flex:1;justify-content:center}
+/* D-m4: link navigasi header tamu (desktop; di HP digantikan tabbar bawah). */
+.guest-nav{display:flex;align-items:center;gap:20px}
+@media(max-width:900px){.guest-nav{display:none}}
+.guest-nav-link{color:#6B584C;font-size:13px;white-space:nowrap}
+.guest-nav-link:hover{color:#2C1E16}
+.guest-auth{display:flex;align-items:center;gap:9px}
+.guest-login,.guest-register{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  min-height:44px;
+  padding:0 16px;
+  border:1px solid #E2D5C3;
+  border-radius:4px;
+  color:#5f4934;
+  font-size:12px;
+  font-weight:600;
+  transition:background .18s ease,color .18s ease,border-color .18s ease;
+}
+.guest-login:hover{background:#F1E9DD}
+.guest-register{border-color:#2C1E16;background:#2C1E16;color:#FFFFFF}
+.guest-register:hover{border-color:#2C1E16;background:#2C1E16;color:#fff}
+.guest-page .guest-hero{min-height:360px}
+.guest-page .guest-hero .hero-content{max-width:580px}
+.guest-page .guest-hero .hero-content h1{max-width:510px}
+.guest-menu-section{padding-top:4px}
+.guest-page .section-head{align-items:flex-end;margin-top:34px}
+.guest-page .section-head h2{
+  margin:0;
+  color:#2C1E16;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:26px;
+  font-weight:400;
+}
+.guest-section-kicker{
+  margin:0 0 6px;
+  color:#6B584C;
+  font-size:10px;
+  font-weight:600;
+  letter-spacing:.15em;
+  text-transform:uppercase;
+}
+.guest-note{color:#8A7563;font-size:12px}
+.guest-category{margin:0 0 28px;scroll-margin-top:88px}
+.guest-category h3{
+  margin:0 0 12px;
+  color:#6B584C;
+  font-size:11px;
+  font-weight:700;
+  letter-spacing:.14em;
+  text-transform:uppercase;
+}
+.guest-product-grid{grid-template-columns:repeat(4,minmax(0,1fr))}
+.guest-product-card{min-width:0}
+.guest-item-hint{
+  position:absolute;
+  right:10px;
+  bottom:10px;
+  padding:6px 9px;
+  border-radius:3px;
+  background:rgba(41,53,45,.9);
+  color:#FFFFFF;
+  font-size:10px;
+  opacity:0;
+  transform:translateY(3px);
+  transition:opacity .18s ease,transform .18s ease;
+}
+.guest-product-card:hover .guest-item-hint,
+.guest-product-card:focus-visible .guest-item-hint{opacity:1;transform:translateY(0)}
+.guest-product-card:focus-visible{outline:2px solid #9A4A20;outline-offset:3px}
+.guest-message{
+  padding:24px;
+  border:1px solid #E2D5C3;
+  border-radius:5px;
+  background:#FFFFFF;
+  color:#6B584C;
+  font-size:13px;
+}
+.guest-message-error{color:#B9382C}
+.guest-location{
+  display:grid;
+  grid-template-columns:minmax(220px,.75fr) minmax(0,1.25fr);
+  gap:28px;
+  align-items:center;
+  margin:44px 0 36px;
+  padding:24px;
+  border:1px solid #E2D5C3;
+  border-radius:5px;
+  background:#FFFFFF;
+}
+.guest-location-info h2{
+  margin:0 0 12px;
+  color:#2C1E16;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:25px;
+  font-weight:400;
+}
+.guest-address{
+  margin:0 0 18px;
+  color:#6B584C;
+  font-size:13px;
+  line-height:1.75;
+}
+.guest-directions{
+  display:inline-flex;
+  align-items:center;
+  gap:6px;
+  color:#6B584C;
+  font-size:12px;
+  font-weight:600;
+}
+.guest-directions:hover{color:#2C1E16;text-decoration:underline;text-underline-offset:3px}
+.guest-directions svg{width:15px;height:15px;stroke:currentColor;stroke-width:1.8}
+.guest-map-wrap{
+  position:relative;
+  min-height:250px;
+  overflow:hidden;
+  border:1px solid #E2D5C3;
+  border-radius:4px;
+  background:#F1E9DD;
+}
+/* D-m3: fallback bila embed Google Maps gagal dimuat — lapisan di belakang
+   iframe. Iframe yang gagal menampilkan halaman error bawaan Chrome yang
+   opaque dan menutupi fallback, jadi probe JS di tamu.html/tentang.html
+   menyembunyikan iframe (display:none) bila maps.google.com tidak
+   terjangkau; bila peta berhasil dimuat, iframe menutupinya. */
+.guest-map-fallback{
+  position:absolute;
+  inset:0;
+  display:flex;
+  flex-direction:column;
+  align-items:center;
+  justify-content:center;
+  gap:10px;
+  padding:20px;
+  text-align:center;
+  background:
+    repeating-linear-gradient(0deg,transparent 0 34px,rgba(120,84,58,.10) 34px 35px),
+    repeating-linear-gradient(90deg,transparent 0 34px,rgba(120,84,58,.10) 34px 35px),
+    #F1E9DD;
+}
+.guest-map-fallback p{margin:0;color:#6B584C;font-size:13px;font-weight:600}
+.guest-map-wrap iframe{position:relative;z-index:1;display:block;width:100%;height:270px;border:0}
+.guest-footer{
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+  gap:12px;
+  padding:26px 0 34px;
+  border-top:1px solid #E2D5C3;
+  color:#8A7563;
+  font-size:14px;
+}
+.guest-footer-brand{display:flex;flex-direction:column;gap:5px}
+.guest-footer-brand span:first-child{
+  color:#2C1E16;
+  font-family:Georgia,"Times New Roman",serif;
+  font-size:20px;
+}
+.guest-instagram{display:inline-flex;align-items:center;gap:8px;color:#6B584C;font-size:15px}
+.guest-instagram:hover{color:#2C1E16;text-decoration:underline;text-underline-offset:3px}
+.guest-instagram svg{width:20px;height:20px;stroke:currentColor;stroke-width:1.7}
+.guest-instagram .instagram-dot{fill:currentColor;stroke:none}
+@media(max-width:640px){
+  .guest-page .topbar-inner{height:auto;min-height:64px;gap:12px;padding-right:16px;padding-left:16px}
+  .guest-page .brand{gap:7px;font-size:13px}
+  .guest-page .brand .cup-icon{width:30px;height:30px}
+  .guest-page .brand .cup-icon img{width:24px;height:24px}
+  .guest-page .brand-name{font-size:11px}
+  .guest-controls{gap:8px}
+  .guest-nav-link{font-size:11px}
+  .guest-auth{gap:6px}
+  .guest-login,.guest-register{min-height:44px;padding:0 10px;font-size:11px}
+  .guest-page .guest-hero{min-height:300px}
+  .guest-page .guest-hero .hero-content{padding:30px 22px}
+  .guest-page .section-head{align-items:flex-start;flex-direction:column;gap:8px}
+  .guest-location{grid-template-columns:1fr;gap:18px;margin:32px 0 28px;padding:19px}
+  .guest-location-info h2{font-size:23px}
+  .guest-map-wrap{min-height:220px}
+  .guest-map-wrap iframe{height:220px}
+  .guest-note{font-size:11px}
+  .guest-product-grid{grid-template-columns:repeat(2,minmax(0,1fr))}
+  .guest-item-hint{opacity:1;transform:none;font-size:9px}
+  .guest-footer{align-items:flex-start;flex-direction:column}
+}
+@media(max-width:360px){
+  .guest-page .brand{gap:5px}
+  .guest-page .brand-name{font-size:10px}
+  .guest-controls{gap:6px}
+  .guest-nav-link{font-size:10px}
+  .guest-login,.guest-register{padding:0 8px}
+}
+@media(prefers-reduced-motion:reduce){
+  .guest-page *,
+  .guest-page *::before,
+  .guest-page *::after{transition:none!important}
+}

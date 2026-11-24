@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Masuk — Mampir Kopi</title>
+  <link rel="canonical" href="http://localhost:8080/login.html">
+  <meta property="og:url" content="http://localhost:8080/login.html">
+  <meta property="og:image" content="img/og.jpg">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="twitter:title" content="Masuk — Mampir Kopi">
+  <meta name="twitter:description" content="Masuk atau daftar akun Mampir Kopi untuk memesan kopi dan minuman favoritmu.">
+  <meta name="twitter:image" content="img/og.jpg">
+<meta name="description" content="Masuk atau daftar akun Mampir Kopi untuk memesan kopi dan minuman favoritmu.">
+<link rel="icon" type="image/svg+xml" href="img/logo-mampir-kopi.svg">
+<meta property="og:title" content="Mampir Kopi">
+<meta property="og:description" content="Masuk atau daftar akun Mampir Kopi untuk memesan kopi dan minuman favoritmu.">
+<meta property="og:type" content="website">
+<style>
+  :root{color-scheme:light;--ink:#2C1E16;--muted:#6B584C;--coffee:#9A4A20;--line:#E2D5C3;--paper:#FFFFFF}
+  *{box-sizing:border-box}
+  body{font-family:"Segoe UI",system-ui,sans-serif;background:#F1E9DD;color:var(--ink);display:grid;min-height:100vh;place-items:center;margin:0;padding:28px}
+  .layout{display:grid;grid-template-columns:1.03fr .97fr;width:min(100%,980px);min-height:590px;overflow:hidden;border:1px solid rgba(41,53,45,.25);border-radius:7px;background:var(--paper);box-shadow:0 10px 28px rgba(41,53,45,.12)}
+  .cafe{position:relative;display:flex;flex-direction:column;justify-content:space-between;min-height:590px;padding:38px;color:#fffaf2;background:#2C1E16 url("img/cafe-login.jpg") 40% center/cover no-repeat}
+  .cafe::before{content:"";position:absolute;inset:0;background:linear-gradient(180deg,rgba(29,34,28,.76) 0%,rgba(29,34,28,.34) 30%,rgba(29,34,28,.10) 50%,rgba(29,34,28,.44) 74%,rgba(29,34,28,.82) 100%)}
+  .brand,.cafe-caption{position:relative;z-index:1;text-shadow:0 1px 3px rgba(18,22,18,.6),0 2px 16px rgba(18,22,18,.5)}
+  .brand{display:flex;align-items:center;gap:13px;color:#fffaf2}
+  .brand img{width:49px;height:49px;object-fit:contain}
+  .brand-name{font-family:Georgia,"Times New Roman",serif;font-size:22px;letter-spacing:.12em}
+  .brand-name span{display:block;margin-top:4px;font-family:"Segoe UI",system-ui,sans-serif;font-size:11px;font-weight:600;letter-spacing:.24em;text-transform:uppercase;color:#f2e7cf}
+  .cafe-caption{max-width:310px}
+  .cafe-caption p{margin:0 0 10px;color:#F5EFE6;font-size:12px;font-weight:700;letter-spacing:.19em;text-transform:uppercase}
+  .cafe-caption h1{margin:0;font-family:Georgia,"Times New Roman",serif;font-size:clamp(30px,4vw,44px);font-weight:400;line-height:1.12}
+  .box{display:flex;flex-direction:column;justify-content:center;width:100%;padding:56px clamp(34px,5vw,62px);background:var(--paper)}
+  .form-kicker{margin:0 0 7px;color:var(--muted);font-size:13px}
+  h2{margin:0;color:var(--ink);font-family:Georgia,"Times New Roman",serif;font-size:34px;font-weight:400;letter-spacing:-.025em}
+  .form-intro{margin:9px 0 28px;color:var(--muted);font-size:13px;line-height:1.6}
+  .field{margin-bottom:18px}
+  .pw-wrap{ position:relative; display:block; }
+  .pw-wrap input{ padding-right:52px; }
+  .pw-wrap .pw-eye{ position:absolute; right:2px; top:50%; transform:translateY(-50%); width:44px; height:44px; margin:0; border:0; background:transparent; color:#6B584C; display:flex; align-items:center; justify-content:center; cursor:pointer; border-radius:6px; }
+  .pw-wrap .pw-eye:hover, .pw-wrap .pw-eye:active{ background:transparent; }
+  .pw-eye svg{ width:20px; height:20px; }
+  .pw-eye .ic-eyeoff{ display:none; }
+  .lupa-link{ display:block; text-align:right; font-size:13px; color:var(--coffee); margin:-6px 0 14px; cursor:pointer; }
+  /* Panel lupa password (22 Nov 2026): satu langkah, di dalam .box yang sama. */
+  #authForm[hidden], #lupaPanel[hidden], #lupaForm[hidden], #lupaSukses[hidden]{display:none}
+  #lupaPesan{min-height:20px;margin:0 0 8px;color:#B9382C;font-size:13px;line-height:1.5}
+  .lupa-sukses{margin:0 0 8px;color:#3B6E4C;font-size:15px;font-weight:600;line-height:1.6}
+  .lupa-sukses-sub{margin:0 0 18px;color:var(--muted);font-size:13px;line-height:1.6}
+  #lupaKembali{display:block;text-align:center}
+  .pw-eye.on .ic-eye{ display:none; }
+  .pw-eye.on .ic-eyeoff{ display:block; }
+  label{display:block;margin-bottom:7px;color:#6B584C;font-size:13px;font-weight:500}
+  input,button{width:100%;font:inherit}
+  input{height:45px;padding:0 12px;border:1px solid var(--line);border-radius:4px;outline:0;background:#fff;color:var(--ink);font-size:13px;transition:border-color .15s}
+  input::placeholder{color:#aaa39a}
+  input:focus{border-color:#9A4A20}
+  button{height:46px;margin:4px 0 17px;border:0;border-radius:4px;background:var(--ink);color:#FFFFFF;font-size:13px;font-weight:600;cursor:pointer;transition:background .15s}
+  button:hover{background:#2C1E16}
+  button:active{background:#141c17}
+  a{align-self:center;color:#6B584C;font-size:13px;text-decoration:none;cursor:pointer}
+  a:hover{color:#2C1E16;text-decoration:underline;text-underline-offset:3px}
+  .guest-link{margin-top:20px;color:#8A7563}
+  #pesan{min-height:20px;margin:0 0 8px;color:#a53e32;font-size:13px;line-height:1.5}
+  #daftarField[hidden]{display:none}
+  .form-fields{animation:appear .18s ease-out}
+  @keyframes appear{from{opacity:.5}to{opacity:1}}
+  @media(max-width:680px){body{padding:16px}.layout{grid-template-columns:1fr;max-width:440px;min-height:0}.cafe{min-height:205px;padding:22px 25px;background-position:center 53%}.brand img{width:40px;height:40px}.brand-name{font-size:18px}.cafe-caption{max-width:235px}.cafe-caption p{margin-bottom:6px;font-size:11px}.cafe-caption h1{font-size:27px}.box{padding:34px 27px 32px}}
+  @media(max-width:360px){body{padding:10px}.box{padding:29px 22px}.cafe{min-height:190px}}
+  @media(prefers-reduced-motion:reduce){*,*::before,*::after{animation-duration:.01ms!important;transition-duration:.01ms!important}}
+</style>
+  <link rel="stylesheet" href="css/fonts.css?v=20261122e">
+  <link rel="stylesheet" href="css/animasi.css?v=20261122n">
+  <link rel="stylesheet" href="css/awwwards.css?v=20261122t">
+</head>
+<body>
+<a class="skip-link" href="#konten">Lewati ke konten utama</a>
+<main class="layout" id="konten">
+  <section class="cafe" aria-label="Suasana kafe Mampir Kopi">
+    <a class="brand" href="tamu.html">
+      <img src="img/logo-mampir-kopi.svg" alt="" width="100" height="100">
+      <div class="brand-name">MAMPIR KOPI<span>Tempat singgah, rasa istimewa</span></div>
+    </a>
+    <div class="cafe-caption">
+      <p data-konten="login_kicker">Kopi yang dibuat dengan hati</p>
+      <h1 data-konten="login_judul">Tempat singgah untuk menikmati jeda.</h1>
+    </div>
+  </section>
+  <section class="box" aria-label="Akun Mampir Kopi">
+    <p class="form-kicker" id="formKicker">Selamat datang kembali</p>
+    <h2 id="judul">Masuk</h2>
+    <p class="form-intro" id="formIntro">Masuk ke akun Mampir Kopi untuk melanjutkan.</p>
+    <form id="authForm" method="post" action="#">
+    <div id="daftarField" class="form-fields" hidden>
+      <div class="field"><label for="nama">Nama</label><input id="nama" type="text" placeholder="Nama lengkap" autocomplete="name"></div>
+      <div class="field"><label for="email">Email</label><input id="email" type="email" placeholder="nama@email.com" autocomplete="email"></div>
+    </div>
+    <div class="field"><label for="identifier" id="identifierLabel">Username atau email</label><input id="identifier" placeholder="Masukkan username atau email" autocomplete="username"></div>
+    <div class="field"><label for="password">Password</label><span class="pw-wrap"><input id="password" type="password" placeholder="Masukkan password" autocomplete="current-password"><button type="button" class="pw-eye" data-pw="password" aria-label="Tampilkan password"><svg class="ic-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="ic-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></span></div>
+    <a class="lupa-link" id="lupaLink">Lupa password?</a>
+    <div id="pesan" role="status" aria-live="polite"></div>
+    <button id="kirim" type="submit">Masuk</button>
+    </form>
+    <div id="lupaPanel" hidden>
+      <form id="lupaForm" method="post" action="#">
+        <div class="field"><label for="lupaIdentifier">Username atau email</label><input id="lupaIdentifier" placeholder="Masukkan username atau email" autocomplete="username"></div>
+        <div class="field"><label for="lupaLama">Password lama</label><span class="pw-wrap"><input id="lupaLama" type="password" placeholder="Masukkan password lama" autocomplete="current-password"><button type="button" class="pw-eye" data-pw="lupaLama" aria-label="Tampilkan password"><svg class="ic-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="ic-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></span></div>
+        <div class="field"><label for="lupaBaru">Password baru</label><span class="pw-wrap"><input id="lupaBaru" type="password" placeholder="Minimal 6 karakter" autocomplete="new-password"><button type="button" class="pw-eye" data-pw="lupaBaru" aria-label="Tampilkan password"><svg class="ic-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="ic-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></span></div>
+        <div class="field"><label for="lupaUlang">Ulangi password baru</label><span class="pw-wrap"><input id="lupaUlang" type="password" placeholder="Ketik ulang password baru" autocomplete="new-password"><button type="button" class="pw-eye" data-pw="lupaUlang" aria-label="Tampilkan password"><svg class="ic-eye" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M1 12s4-8 11-8 11 8 11 8-4 8-11 8-11-8-11-8z"/><circle cx="12" cy="12" r="3"/></svg><svg class="ic-eyeoff" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M17.94 17.94A10.07 10.07 0 0 1 12 20c-7 0-11-8-11-8a18.45 18.45 0 0 1 5.06-5.94M9.9 4.24A9.12 9.12 0 0 1 12 4c7 0 11 8 11 8a18.5 18.5 0 0 1-2.16 3.19m-6.72-1.07a3 3 0 1 1-4.24-4.24"/><line x1="1" y1="1" x2="23" y2="23"/></svg></button></span></div>
+        <div id="lupaPesan" role="status" aria-live="polite"></div>
+        <button id="lupaKirim" type="submit">Atur ulang password</button>
+        <a id="lupaKembali">Kembali ke masuk</a>
+      </form>
+      <div id="lupaSukses" hidden>
+        <p class="lupa-sukses">Password berhasil diganti.</p>
+        <p class="lupa-sukses-sub">Silakan masuk dengan password barumu.</p>
+        <button id="lupaKembaliSukses" type="button">Kembali ke masuk</button>
+      </div>
+    </div>
+    <a id="ganti">Belum punya akun? Daftar</a>
+    <a class="guest-link" href="tamu.html">Jelajahi sebagai tamu</a>
+  </section>
+</main>
+<script src="js/vendor/gsap.min.js"></script>
+<script src="js/vendor/ScrollTrigger.min.js"></script>
+<script src="js/vendor/SplitText.min.js"></script>
+<script src="js/motion.js?v=20261122u"></script>
+<script src="js/konten.js?v=20261122m"></script>
+<script>
+let daftar = false;
+const $ = id => document.getElementById(id);
+
+$('ganti').onclick = () => {
+  daftar = !daftar;
+  $('daftarField').hidden = !daftar;
+  $('judul').textContent = daftar ? 'Daftar' : 'Masuk';
+  $('formKicker').textContent = daftar ? 'Buat akun baru' : 'Selamat datang kembali';
+  $('formIntro').textContent = daftar ? 'Buat akun untuk mulai menikmati Mampir Kopi.' : 'Masuk ke akun Mampir Kopi untuk melanjutkan.';
+  $('identifierLabel').textContent = daftar ? 'Username' : 'Username atau email';
+  $('identifier').placeholder = daftar ? 'Masukkan username' : 'Masukkan username atau email';
+  $('kirim').textContent = daftar ? 'Daftar' : 'Masuk';
+  $('ganti').textContent = daftar ? 'Sudah punya akun? Masuk' : 'Belum punya akun? Daftar';
+  $('password').autocomplete = daftar ? 'new-password' : 'current-password';
+  $('pesan').textContent = '';
+};
+
+if (new URLSearchParams(location.search).get('mode') === 'daftar') $('ganti').click();
+
+let csrf = '';
+/* Diekspos sebagai promise supaya js/konten.js bisa menunggu fetch ini
+   selesai dulu: dua request API pertama yang bersamaan (tanpa cookie sesi)
+   membuat dua sesi PHP, dan token CSRF bisa terikat ke sesi yang kalah
+   sehingga login ditolak. Menunggu di sini menutup race itu. */
+window.__csrfReady = fetch('api/auth.php?r=csrf').then(r => r.json()).then(j => { csrf = j.data.token; }).catch(() => {});
+
+$('authForm').addEventListener('submit', async (ev) => {
+  ev.preventDefault();
+  if (!csrf) {
+    try { const r = await fetch('api/auth.php?r=csrf'); const j = await r.json(); csrf = j.data.token; } catch (e) { /* lanjut; server akan menolak bila token tetap kosong */ }
+  }
+  const identifier = $('identifier').value;
+  const body = daftar
+    ? { username: identifier, password: $('password').value, email: $('email').value, nama: $('nama').value }
+    : { identifier, password: $('password').value };
+  try {
+    const res = await fetch('api/auth.php?r=' + (daftar ? 'daftar' : 'login'), {
+      method: 'POST', headers: {'Content-Type': 'application/json', 'X-CSRF-Token': csrf}, body: JSON.stringify(body)
+    });
+    const j = await res.json();
+    if (!j.ok) throw new Error(j.error);
+    if (daftar) {
+      $('ganti').click();
+      $('pesan').style.color = 'green';
+      $('pesan').textContent = 'Berhasil daftar, silakan masuk.';
+      return;
+    }
+    /* MODE GELAP anti-kilatan (22 Nov 16:34): tulis cache tema SEBELUM
+       redirect, supaya halaman pertama sesudah login langsung gelap. */
+    try {
+      if (j.data.pref_tema) localStorage.setItem('mk_tema', j.data.pref_tema === 'gelap' ? 'gelap' : 'terang');
+      else localStorage.removeItem('mk_tema');
+    } catch (e) {}
+    location.href = j.data.role === 'admin' ? 'admin.html' : 'dashboard.html';
+  } catch (e) {
+    $('pesan').style.color = '#c0392b';
+    $('pesan').textContent = e.message;
+  }
+});
+
+/* Lupa password (22 Nov 2026): panel satu langkah — verifikasi password
+   lama, tanpa kode/email. Memakai token CSRF yang sama dengan login
+   (window.__csrfReady); jangan fetch CSRF kedua (race sesi). Pesan error
+   "Password lama salah." tampil apa adanya di panel dan tetap tampil
+   sampai pengguna mencoba lagi; pesan sukses "Password berhasil diganti."
+   tetap tampil di langkah sukses bersama tombol kembali. */
+$('lupaLink').onclick = () => {
+  $('authForm').hidden = true;
+  $('ganti').style.display = 'none';
+  $('lupaPanel').hidden = false;
+  $('formKicker').textContent = 'Atur ulang password';
+  $('judul').textContent = 'Lupa password';
+  $('formIntro').textContent = 'Masukkan username atau email, password lama, lalu password barumu.';
+  $('lupaIdentifier').focus();
+};
+function kembaliMasuk() {
+  $('identifier').value = $('lupaIdentifier').value;
+  $('lupaPanel').hidden = true;
+  $('lupaSukses').hidden = true;
+  $('lupaForm').hidden = false;
+  $('authForm').hidden = false;
+  $('ganti').style.display = '';
+  $('formKicker').textContent = 'Selamat datang kembali';
+  $('judul').textContent = 'Masuk';
+  $('formIntro').textContent = 'Masuk ke akun Mampir Kopi untuk melanjutkan.';
+  $('lupaPesan').textContent = '';
+  $('pesan').textContent = '';
+  $('lupaForm').reset();
+}
+$('lupaKembali').onclick = kembaliMasuk;
+$('lupaKembaliSukses').onclick = kembaliMasuk;
+$('lupaForm').addEventListener('submit', async (ev) => {
+  ev.preventDefault();
+  const pesan = $('lupaPesan');
+  pesan.textContent = '';
+  await window.__csrfReady;
+  if (!csrf) {
+    try { const r = await fetch('api/auth.php?r=csrf'); const j = await r.json(); csrf = j.data.token; } catch (e) { /* lanjut; server akan menolak bila token tetap kosong */ }
+  }
+  try {
+    const res = await fetch('api/auth.php?r=reset', {
+      method: 'POST', headers: {'Content-Type': 'application/json', 'X-CSRF-Token': csrf},
+      body: JSON.stringify({ identifier: $('lupaIdentifier').value.trim(), password_lama: $('lupaLama').value, password: $('lupaBaru').value, konfirmasi: $('lupaUlang').value })
+    });
+    const j = await res.json();
+    if (!j.ok) throw new Error(j.error);
+    $('lupaForm').hidden = true;
+    $('lupaSukses').hidden = false;
+  } catch (e) {
+    pesan.textContent = e.message;
+  }
+});
+</script>
+<script>
+var lupaLink = document.getElementById('lupaLink');
+var gantiEl = document.getElementById('ganti');
+var sesuaikanLupa = function () { var d = document.getElementById('judul').textContent === 'Daftar'; if (lupaLink) lupaLink.style.display = d ? 'none' : ''; };
+if (gantiEl) gantiEl.addEventListener('click', sesuaikanLupa);
+sesuaikanLupa();
+document.querySelectorAll('.pw-eye').forEach(function (btn) {
+  btn.addEventListener('click', function () {
+    var inp = document.getElementById(btn.getAttribute('data-pw'));
+    if (!inp) return;
+    var tampil = inp.type === 'password';
+    inp.type = tampil ? 'text' : 'password';
+    btn.classList.toggle('on', tampil);
+    btn.setAttribute('aria-label', tampil ? 'Sembunyikan password' : 'Tampilkan password');
+  });
+});
+</script>
+</body>
+</html>
